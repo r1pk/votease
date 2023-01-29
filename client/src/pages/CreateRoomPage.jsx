@@ -23,7 +23,8 @@ const CreateRoomPage = () => {
         poll: data.poll,
       });
 
-      dispatch(actions.room.setRoomId(room.id));
+      dispatch(actions.room.setRoomId({ id: room.id }));
+      dispatch(actions.session.setUser({ id: room.sessionId, username: data.username }));
       navigate(`/rooms/${room.id}`);
     } catch (error) {
       toast.error(error.message);

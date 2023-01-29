@@ -10,6 +10,12 @@ const initialState = {
 const slice = createSlice({
   name: 'session',
   initialState: initialState,
+  reducers: {
+    setUser: (state, action) => {
+      state.user.id = action.payload.id;
+      state.user.username = action.payload.username;
+    },
+  },
 });
 
 export const actions = slice.actions;
