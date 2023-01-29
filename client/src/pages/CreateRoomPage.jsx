@@ -1,0 +1,44 @@
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
+import { toast } from 'react-toastify';
+
+import { Grid } from '@mui/material';
+
+import { CreateRoomForm } from '@/features/room';
+
+import { useDocumentTitle } from '@/hooks/useDocumentTitle';
+
+import { colyseus } from '@/api/colyseus';
+import { actions } from '@/redux';
+
+const CreateRoomPage = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleCreateRoom = async (data) => {
+    try {
+      const room = await colyseus.create('vote-room', {
+        username: data.username,
+        poll: data.poll,
+      });
+
+      dispatch(actions.room.setRoomId(room.id));
+      navigate(`/rooms/${room.id}`);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+  useDocumentTitle('Create Room');
+
+  return (
+    <Grid container sx={{ justifyContent: 'center' }}>
+      <Grid item xs={12} sm={8} md={6} lg={4}>
+        <CreateRoomForm onCreateRoom={handleCreateRoom} />
+      </Grid>
+    </Grid>
+  );
+};
+
+export default CreateRoomPage;
