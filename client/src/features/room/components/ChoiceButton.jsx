@@ -12,9 +12,7 @@ const ChoiceButton = forwardRef(({ index, choice, votes, totalVotes, onClickChoi
   const percentageValue = getPercentageValue(votes, totalVotes);
 
   const handleButtonClick = () => {
-    if (onClickChoice) {
-      onClickChoice(choice.id);
-    }
+    onClickChoice(choice.id);
   };
 
   return (
