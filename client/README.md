@@ -2,6 +2,17 @@
 
 VotEase-client is a responsive application written in React which uses tools such as [Redux](https://redux.js.org/), [Material UI](https://mui.com/getting-started/usage/) and [Colyseus.js](https://www.colyseus.io/). VotEase is a voting app that can be used to quickly determine the best option from a list of available options.
 
+## Screenshots
+
+Create room page
+![Create Room Page](https://i.imgur.com/8KeSChW.png)
+
+Join room page
+![Join Room Page](https://i.imgur.com/Natc3Aj.png)
+
+Room page
+![Room Page](https://i.imgur.com/wd7sb0l.png)
+
 ## Pre-requisites
 
 - [node.js v18+ or higher](https://nodejs.org/en/)
