@@ -8,7 +8,13 @@ class ColyseusClient extends Client {
   #handleRoomStateChange = (state) => {
     const plainState = JSON.parse(JSON.stringify(state));
 
-    store.dispatch(actions.room.updateState(plainState));
+    store.dispatch(
+      actions.room.updateState({
+        owner: plainState.owner,
+        poll: plainState.poll,
+        users: Object.values(plainState.users),
+      })
+    );
   };
 
   async create(roomName, options, rootSchema) {
