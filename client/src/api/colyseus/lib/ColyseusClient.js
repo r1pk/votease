@@ -2,6 +2,8 @@ import { Client } from 'colyseus.js';
 
 import { store, actions } from '@/redux';
 
+import { toast } from 'react-toastify';
+
 class ColyseusClient extends Client {
   room = null;
 
@@ -24,14 +26,21 @@ class ColyseusClient extends Client {
     this.room = null;
   };
 
+  #handleRoomError = (code, message) => {
+    console.error(code, message);
+    toast.error(message);
+  };
+
   async create(roomName, options, rootSchema) {
     if (this.room) {
       throw new Error('You need to leave the current room before creating a new one.');
     }
 
     this.room = await super.create(roomName, options, rootSchema);
+
     this.room.onStateChange(this.#handleRoomStateChange);
     this.room.onLeave(this.#handleRoomLeave);
+    this.room.onError(this.#handleRoomError);
 
     return this.room;
   }
@@ -42,8 +51,10 @@ class ColyseusClient extends Client {
     }
 
     this.room = await super.joinById(roomId, options, rootSchema);
+
     this.room.onStateChange(this.#handleRoomStateChange);
     this.room.onLeave(this.#handleRoomLeave);
+    this.room.onError(this.#handleRoomError);
 
     return this.room;
   }

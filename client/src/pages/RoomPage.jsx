@@ -22,21 +22,13 @@ const RoomPage = () => {
   const isCurrentUserRoomOwner = user.id === owner.id;
 
   const handleSubmitChoice = (choiceId) => {
-    try {
-      colyseus.room.send('poll::cast-answer', {
-        choiceId: choiceId,
-      });
-    } catch (error) {
-      toast.error(error.message);
-    }
+    colyseus.room.send('poll::cast-answer', {
+      choiceId: choiceId,
+    });
   };
 
   const handleResetPollAnswers = () => {
-    try {
-      colyseus.room.send('poll::reset-answers');
-    } catch (error) {
-      toast.error(error.message);
-    }
+    colyseus.room.send('poll::reset-answers');
   };
 
   const handleLeaveRoom = () => {
