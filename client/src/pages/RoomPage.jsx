@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
 
@@ -16,6 +17,8 @@ const RoomPage = () => {
   const user = useSelector((store) => store.session.user);
   const users = useSelector((store) => store.room.users);
 
+  const navigate = useNavigate();
+
   const handleSubmitChoice = (choiceId) => {
     try {
       colyseus.room.send('poll::cast-answer', {
@@ -29,6 +32,7 @@ const RoomPage = () => {
   const handleLeaveRoom = () => {
     try {
       colyseus.leave();
+      navigate('/');
     } catch (error) {
       toast.error(error.message);
     }
