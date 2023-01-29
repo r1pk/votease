@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 
 import { Grid, Stack } from '@mui/material';
 
-import { Poll, UserList, LeaveRoomButton } from '@/features/room';
+import { Poll, UserList, LeaveRoomButton, ResetPollAnswersButton } from '@/features/room';
 
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 
@@ -19,11 +19,21 @@ const RoomPage = () => {
 
   const navigate = useNavigate();
 
+  const isCurrentUserRoomOwner = user.id === owner.id;
+
   const handleSubmitChoice = (choiceId) => {
     try {
       colyseus.room.send('poll::cast-answer', {
         choiceId: choiceId,
       });
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+  const handleResetPollAnswers = () => {
+    try {
+      colyseus.room.send('poll::reset-answers');
     } catch (error) {
       toast.error(error.message);
     }
@@ -44,6 +54,11 @@ const RoomPage = () => {
     <Grid container sx={{ justifyContent: 'center' }}>
       <Grid item xs={12} sm={8} md={6} lg={4}>
         <Stack spacing={2}>
+          {isCurrentUserRoomOwner && (
+            <Stack direction="row" sx={{ justifyContent: 'flex-end' }}>
+              <ResetPollAnswersButton onResetPollAnswers={handleResetPollAnswers} />
+            </Stack>
+          )}
           <Poll poll={poll} user={user} onSubmitChoice={handleSubmitChoice} />
           <UserList users={users} owner={owner} />
           <Stack direction="row" sx={{ justifyContent: 'flex-end' }}>
