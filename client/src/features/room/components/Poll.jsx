@@ -4,12 +4,13 @@ import { forwardRef } from 'react';
 import { Card, CardHeader, CardActions, CardContent, Divider, Stack } from '@mui/material';
 
 import ChoiceButton from './ChoiceButton';
-import CastedAnswer from './CastedAnswer';
+import LinearIndicator from './LinearIndicator';
+import Answer from './Answer';
 
-import { aggregateAnswers } from '../utils/aggregateAnswers';
+import { sumAnswersPerChoice } from '../utils/sumAnswersPerChoice';
 
 const Poll = forwardRef(({ poll, user, onSubmitChoice, ...rest }, ref) => {
-  const aggregatedAnswers = aggregateAnswers(poll.choices, poll.answers);
+  const answerCount = sumAnswersPerChoice(poll.choices, poll.answers);
   const hasUserAnswered = poll.answers.some((answer) => answer.user.id === user.id);
 
   const handleClickChoice = (choiceId) => {
@@ -31,25 +32,27 @@ const Poll = forwardRef(({ poll, user, onSubmitChoice, ...rest }, ref) => {
       <Divider />
       <CardActions>
         <Stack direction="column" spacing={1} sx={{ width: 1 }}>
-          {poll.choices.map((choice, index) => (
-            <ChoiceButton
-              key={choice.id}
-              index={index}
-              choice={choice}
-              votes={aggregatedAnswers[choice.id].length}
-              totalVotes={poll.answers.length}
-              disabled={hasUserAnswered}
-              onClickChoice={handleClickChoice}
-            />
-          ))}
+          {hasUserAnswered &&
+            poll.choices.map((choice) => (
+              <LinearIndicator
+                key={choice.id}
+                choice={choice}
+                votes={answerCount[choice.id]}
+                totalVotes={poll.answers.length}
+              />
+            ))}
+          {!hasUserAnswered &&
+            poll.choices.map((choice) => (
+              <ChoiceButton key={choice.id} choice={choice} onClickChoice={handleClickChoice} />
+            ))}
         </Stack>
       </CardActions>
       <Divider />
       <CardContent>
         <Stack direction="row" sx={{ flexWrap: 'wrap', gap: 1 }}>
-          {Object.values(aggregatedAnswers).map((answers, index) =>
-            answers.map((answer) => <CastedAnswer key={answer.user.id} answer={answer} choiceIndex={index} />)
-          )}
+          {poll.answers.map((answer) => (
+            <Answer key={answer.user.id} answer={answer} />
+          ))}
         </Stack>
       </CardContent>
     </Card>
