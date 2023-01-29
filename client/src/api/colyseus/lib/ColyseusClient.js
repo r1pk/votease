@@ -20,6 +20,8 @@ class ColyseusClient extends Client {
   #handleRoomLeave = () => {
     store.dispatch(actions.room.resetState());
     store.dispatch(actions.session.resetState());
+
+    this.room = null;
   };
 
   async create(roomName, options, rootSchema) {
@@ -44,15 +46,6 @@ class ColyseusClient extends Client {
     this.room.onLeave(this.#handleRoomLeave);
 
     return this.room;
-  }
-
-  async leave() {
-    if (!this.room) {
-      throw new Error('You need to create or join a room before leaving it.');
-    }
-
-    this.room.leave();
-    this.room = null;
   }
 }
 

@@ -41,7 +41,7 @@ const RoomPage = () => {
 
   const handleLeaveRoom = () => {
     try {
-      colyseus.leave();
+      colyseus.room.leave();
       navigate('/');
     } catch (error) {
       toast.error(error.message);
