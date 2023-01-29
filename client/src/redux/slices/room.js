@@ -26,6 +26,7 @@ const slice = createSlice({
       state.poll = action.payload.poll;
       state.users = action.payload.users;
     },
+    resetState: () => initialState,
   },
 });
 

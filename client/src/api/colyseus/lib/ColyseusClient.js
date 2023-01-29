@@ -17,6 +17,11 @@ class ColyseusClient extends Client {
     );
   };
 
+  #handleRoomLeave = () => {
+    store.dispatch(actions.room.resetState());
+    store.dispatch(actions.session.resetState());
+  };
+
   async create(roomName, options, rootSchema) {
     if (this.room) {
       throw new Error('You need to leave the current room before creating a new one.');
@@ -24,6 +29,7 @@ class ColyseusClient extends Client {
 
     this.room = await super.create(roomName, options, rootSchema);
     this.room.onStateChange(this.#handleRoomStateChange);
+    this.room.onLeave(this.#handleRoomLeave);
 
     return this.room;
   }
@@ -35,6 +41,7 @@ class ColyseusClient extends Client {
 
     this.room = await super.joinById(roomId, options, rootSchema);
     this.room.onStateChange(this.#handleRoomStateChange);
+    this.room.onLeave(this.#handleRoomLeave);
 
     return this.room;
   }

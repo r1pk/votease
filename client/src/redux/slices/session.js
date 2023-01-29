@@ -15,6 +15,7 @@ const slice = createSlice({
       state.user.id = action.payload.id;
       state.user.username = action.payload.username;
     },
+    resetState: () => initialState,
   },
 });
 
