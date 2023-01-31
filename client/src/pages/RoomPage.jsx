@@ -8,10 +8,12 @@ import { Grid, Stack } from '@mui/material';
 import { Poll, UserList, LeaveRoomButton, ResetPollAnswersButton } from '@/features/room';
 
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
+import { useNavigationBlocker } from '@/hooks/useNavigationBlocker';
 
 import { colyseus } from '@/api/colyseus';
 
 const RoomPage = () => {
+  const roomId = useSelector((store) => store.room.id);
   const poll = useSelector((store) => store.room.poll);
   const owner = useSelector((store) => store.room.owner);
   const user = useSelector((store) => store.session.user);
@@ -19,6 +21,7 @@ const RoomPage = () => {
 
   const navigate = useNavigate();
 
+  const isCurrentUserRoomMember = Boolean(roomId);
   const isCurrentUserRoomOwner = user.id === owner.id;
 
   const handleSubmitChoice = (choiceId) => {
@@ -40,7 +43,12 @@ const RoomPage = () => {
     }
   };
 
+  const handleLeavePage = () => {
+    colyseus.room.leave();
+  };
+
   useDocumentTitle('Room');
+  useNavigationBlocker(handleLeavePage, isCurrentUserRoomMember);
 
   return (
     <Grid container sx={{ justifyContent: 'center' }}>
