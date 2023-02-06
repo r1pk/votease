@@ -11,7 +11,7 @@ Join room page
 ![Join Room Page](https://i.imgur.com/Natc3Aj.png)
 
 Room page
-![Room Page](https://i.imgur.com/2An3bgR.png)
+![Room Page](https://i.imgur.com/YGDzb9A.png)
 
 ## Pre-requisites
 
