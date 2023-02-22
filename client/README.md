@@ -1,6 +1,7 @@
 # VotEase-client
 
-VotEase-client is a responsive application written in React which uses tools such as [Redux](https://redux.js.org/), [Material UI](https://mui.com/getting-started/usage/) and [Colyseus.js](https://www.colyseus.io/). VotEase is a voting app that can be used to quickly determine the best option from a list of available options.
+VotEase-client is a responsive web application written in [React](https://reactjs.org/), allowing users to perform simple surveys in private rooms.  
+Application is built using [Vite](https://vitejs.dev/), [Redux](https://redux.js.org/), [React Router](https://reacttraining.com/react-router/) and [Material UI](https://mui.com/).
 
 ## Screenshots
 
