@@ -5,7 +5,7 @@ import { Chip, alpha } from '@mui/material';
 
 import { createColorFromHash } from '../utils/createColorFromHash';
 
-const Answer = forwardRef(({ answer, ...rest }, ref) => {
+const UserAnswer = forwardRef(({ answer, ...rest }, ref) => {
   const choiceColor = createColorFromHash(answer.choice.id);
 
   return (
@@ -19,9 +19,9 @@ const Answer = forwardRef(({ answer, ...rest }, ref) => {
   );
 });
 
-Answer.displayName = 'Answer';
+UserAnswer.displayName = 'UserAnswer';
 
-Answer.propTypes = {
+UserAnswer.propTypes = {
   answer: PropTypes.shape({
     user: PropTypes.shape({
       username: PropTypes.string.isRequired,
@@ -32,4 +32,4 @@ Answer.propTypes = {
   }).isRequired,
 };
 
-export default Answer;
+export default UserAnswer;

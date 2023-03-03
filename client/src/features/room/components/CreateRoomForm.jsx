@@ -2,16 +2,12 @@ import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 
 import { Card, CardHeader, CardContent, CardActions, Divider, Stack } from '@mui/material';
-import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/material';
-import { ExpandMore } from '@mui/icons-material';
 
 import TextField from '@/components/form/TextField';
 import Button from '@/components/form/Button';
 
 import { FormProvider, Controller, useForm } from 'react-hook-form';
 import { joiResolver } from '@hookform/resolvers/joi';
-
-import PollBuilderForm from './PollBuilderForm';
 
 import { CreateRoomFormSchema } from '../schemas/CreateRoomFormSchema';
 
@@ -23,7 +19,7 @@ const CreateRoomForm = forwardRef(({ onCreateRoom, disableForm, ...rest }, ref) 
     defaultValues: {
       username: createRandomUsername(),
       poll: {
-        title: 'Your poll title',
+        title: 'Initial Poll',
         choices: ['Option 1', 'Option 2'],
       },
     },
@@ -62,17 +58,6 @@ const CreateRoomForm = forwardRef(({ onCreateRoom, disableForm, ...rest }, ref) 
                 />
               )}
             />
-            <Accordion>
-              <AccordionSummary>
-                <Stack sx={{ alignItems: 'center', width: 1 }}>
-                  <Typography variant="button">Poll settings</Typography>
-                  <ExpandMore />
-                </Stack>
-              </AccordionSummary>
-              <AccordionDetails>
-                <PollBuilderForm name="poll" />
-              </AccordionDetails>
-            </Accordion>
           </Stack>
         </CardContent>
         <CardActions>

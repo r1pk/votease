@@ -6,7 +6,7 @@ Application is built using [Vite](https://vitejs.dev/), [Redux](https://redux.js
 ## Screenshots
 
 Create room page
-![Create Room Page](https://i.imgur.com/8KeSChW.png)
+![Create Room Page](https://i.imgur.com/YkaHBey.png)
 
 Join room page
 ![Join Room Page](https://i.imgur.com/Natc3Aj.png)

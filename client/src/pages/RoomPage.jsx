@@ -7,14 +7,8 @@ import { toast } from 'react-toastify';
 
 import { Grid, Stack } from '@mui/material';
 
-import {
-  Poll,
-  UserList,
-  LeaveRoomButton,
-  TogglePollEditorButton,
-  EditPollForm,
-  ResetPollAnswersButton,
-} from '@/features/room';
+import { Poll, TogglePollEditorButton, EditPollForm, ResetPollAnswersButton } from '@/features/poll';
+import { UserList, LeaveRoomButton } from '@/features/room';
 
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { useNavigationBlocker } from '@/hooks/useNavigationBlocker';

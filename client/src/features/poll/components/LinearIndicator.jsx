@@ -19,7 +19,7 @@ const LinearIndicator = forwardRef(({ choice, votes, totalVotes, ...rest }, ref)
           width: 1,
           height: 1,
           borderRadius: 1,
-          background: ({ palette }) => createLinearGradient(`${percentageValue}%`, alpha(choiceColor, 0.3)),
+          background: () => createLinearGradient(`${percentageValue}%`, alpha(choiceColor, 0.3)),
         }}
       />
       <Stack sx={{ width: 1, p: 1, alignItems: 'center', zIndex: 1 }}>
