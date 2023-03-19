@@ -15,7 +15,7 @@ import { useNavigationBlocker } from '@/hooks/useNavigationBlocker';
 
 import { colyseus } from '@/api/colyseus';
 
-const RoomPage = () => {
+const Room = () => {
   const [isPollEditorEnabled, setIsPollEditorEnabled] = useState(false);
 
   const roomId = useSelector((store) => store.room.id);
@@ -94,4 +94,4 @@ const RoomPage = () => {
   );
 };
 
-export default RoomPage;
+export default Room;

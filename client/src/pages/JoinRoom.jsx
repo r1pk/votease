@@ -5,22 +5,21 @@ import { toast } from 'react-toastify';
 
 import { Grid } from '@mui/material';
 
-import { CreateRoomForm } from '@/features/room';
+import { JoinRoomForm } from '@/features/room';
 
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 
 import { colyseus } from '@/api/colyseus';
 import { actions } from '@/redux';
 
-const CreateRoomPage = () => {
+const JoinRoom = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleCreateRoom = async (data) => {
+  const handleJoinRoom = async (data) => {
     try {
-      const room = await colyseus.create('vote-room', {
+      const room = await colyseus.joinById(data.roomId, {
         username: data.username,
-        poll: data.poll,
       });
 
       dispatch(actions.room.setRoomId({ id: room.id }));
@@ -31,15 +30,15 @@ const CreateRoomPage = () => {
     }
   };
 
-  useDocumentTitle('Create Room');
+  useDocumentTitle('Join Room');
 
   return (
     <Grid container sx={{ justifyContent: 'center' }}>
       <Grid item xs={12} sm={8} md={6} lg={4}>
-        <CreateRoomForm onCreateRoom={handleCreateRoom} />
+        <JoinRoomForm onJoinRoom={handleJoinRoom} />
       </Grid>
     </Grid>
   );
 };
 
-export default CreateRoomPage;
+export default JoinRoom;

@@ -12,7 +12,7 @@ import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { colyseus } from '@/api/colyseus';
 import { actions } from '@/redux';
 
-const RoomInvitePage = () => {
+const RoomInvite = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const params = useParams();
@@ -60,4 +60,4 @@ const RoomInvitePage = () => {
   );
 };
 
-export default RoomInvitePage;
+export default RoomInvite;
