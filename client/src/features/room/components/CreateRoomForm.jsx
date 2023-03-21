@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
+import Joi from 'joi';
 
 import { Card, CardHeader, CardContent, CardActions, Divider, Stack } from '@mui/material';
 
@@ -9,9 +10,15 @@ import Button from '@/components/form/Button';
 import { FormProvider, Controller, useForm } from 'react-hook-form';
 import { joiResolver } from '@hookform/resolvers/joi';
 
-import { CreateRoomFormSchema } from '../schemas/CreateRoomFormSchema';
-
 import { createRandomUsername } from '../utils/createRandomUsername';
+
+const schema = Joi.object({
+  username: Joi.string().trim().alphanum().min(3).max(20).required().label('username'),
+  poll: Joi.object({
+    title: Joi.string().required().label('title'),
+    choices: Joi.array().min(2).items(Joi.string().label('choice')).required().label('choices'),
+  }),
+});
 
 const CreateRoomForm = forwardRef(({ onCreateRoom, disableForm, ...rest }, ref) => {
   const form = useForm({
@@ -23,7 +30,7 @@ const CreateRoomForm = forwardRef(({ onCreateRoom, disableForm, ...rest }, ref) 
         choices: ['Option 1', 'Option 2'],
       },
     },
-    resolver: joiResolver(CreateRoomFormSchema),
+    resolver: joiResolver(schema),
   });
 
   const onSubmit = (data) => {

@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
+import Joi from 'joi';
 
 import { Card, CardHeader, CardContent, CardActions, Divider, Stack } from '@mui/material';
 
@@ -9,9 +10,12 @@ import Button from '@/components/form/Button';
 import { Controller, useForm } from 'react-hook-form';
 import { joiResolver } from '@hookform/resolvers/joi';
 
-import { JoinRoomFormSchema } from '../schemas/JoinRoomFormSchema';
-
 import { createRandomUsername } from '../utils/createRandomUsername';
+
+const schema = Joi.object({
+  roomId: Joi.string().trim().length(9).required().label('roomId'),
+  username: Joi.string().trim().alphanum().min(3).max(20).required().label('username'),
+});
 
 const JoinRoomForm = forwardRef(({ onJoinRoom, roomId, disableForm, ...rest }, ref) => {
   const { control, formState, handleSubmit } = useForm({
@@ -20,7 +24,7 @@ const JoinRoomForm = forwardRef(({ onJoinRoom, roomId, disableForm, ...rest }, r
       roomId: roomId || '',
       username: createRandomUsername(),
     },
-    resolver: joiResolver(JoinRoomFormSchema),
+    resolver: joiResolver(schema),
   });
 
   const onSubmit = (data) => {

@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
+import Joi from 'joi';
 
 import { Card, CardHeader, CardContent, CardActions, Stack, Paper, Divider } from '@mui/material';
 
@@ -12,7 +13,12 @@ import IconButton from '@/components/form/IconButton';
 import { Controller, useForm, useFieldArray } from 'react-hook-form';
 import { joiResolver } from '@hookform/resolvers/joi';
 
-import { EditPollFormSchema } from '../schemas/EditPollFormSchema';
+const schema = Joi.object({
+  poll: Joi.object({
+    title: Joi.string().required().label('title'),
+    choices: Joi.array().min(2).items(Joi.string().label('choice')).required().label('choices'),
+  }),
+});
 
 const EditPollForm = forwardRef(({ onEditPoll, defaultValues, ...rest }, ref) => {
   const { control, formState, handleSubmit } = useForm({
@@ -26,7 +32,7 @@ const EditPollForm = forwardRef(({ onEditPoll, defaultValues, ...rest }, ref) =>
       },
       defaultValues
     ),
-    resolver: joiResolver(EditPollFormSchema),
+    resolver: joiResolver(schema),
   });
   const { fields, append, remove } = useFieldArray({ control: control, name: 'poll.choices' });
 
