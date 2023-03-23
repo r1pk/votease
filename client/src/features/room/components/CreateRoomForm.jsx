@@ -7,7 +7,7 @@ import { Card, CardHeader, CardContent, CardActions, Divider, Stack } from '@mui
 import TextField from '@/components/form/TextField';
 import Button from '@/components/form/Button';
 
-import { FormProvider, Controller, useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { joiResolver } from '@hookform/resolvers/joi';
 
 import { createRandomUsername } from '../utils/createRandomUsername';
@@ -20,8 +20,8 @@ const schema = Joi.object({
   }),
 });
 
-const CreateRoomForm = forwardRef(({ onCreateRoom, disableForm, ...rest }, ref) => {
-  const form = useForm({
+const CreateRoomForm = forwardRef(({ onCreateRoom, ...rest }, ref) => {
+  const { control, formState, handleSubmit } = useForm({
     mode: 'all',
     defaultValues: {
       username: createRandomUsername(),
@@ -32,48 +32,47 @@ const CreateRoomForm = forwardRef(({ onCreateRoom, disableForm, ...rest }, ref) 
     },
     resolver: joiResolver(schema),
   });
+  const { isValid } = formState;
 
   const onSubmit = (data) => {
-    if (form.formState.isValid && !disableForm) {
+    if (isValid) {
       onCreateRoom(data);
     }
   };
 
   return (
-    <FormProvider {...form}>
-      <Card component="form" onSubmit={form.handleSubmit(onSubmit)} ref={ref} {...rest}>
-        <CardHeader
-          title="Create Room"
-          titleTypographyProps={{
-            variant: 'h5',
-          }}
-          sx={{ textAlign: 'center' }}
-        />
-        <Divider />
-        <CardContent>
-          <Stack direction="column" spacing={1}>
-            <Controller
-              name="username"
-              control={form.control}
-              render={({ field, fieldState }) => (
-                <TextField
-                  label="Username"
-                  error={Boolean(fieldState.error)}
-                  helperText={fieldState.error?.message}
-                  fullWidth
-                  {...field}
-                />
-              )}
-            />
-          </Stack>
-        </CardContent>
-        <CardActions>
-          <Button type="submit" disabled={!form.formState.isValid || disableForm} fullWidth>
-            Create
-          </Button>
-        </CardActions>
-      </Card>
-    </FormProvider>
+    <Card component="form" onSubmit={handleSubmit(onSubmit)} ref={ref} {...rest}>
+      <CardHeader
+        title="Create Room"
+        titleTypographyProps={{
+          variant: 'h5',
+        }}
+        sx={{ textAlign: 'center' }}
+      />
+      <Divider />
+      <CardContent>
+        <Stack direction="column" spacing={1}>
+          <Controller
+            name="username"
+            control={control}
+            render={({ field, fieldState }) => (
+              <TextField
+                label="Username"
+                error={Boolean(fieldState.error)}
+                helperText={fieldState.error?.message}
+                fullWidth
+                {...field}
+              />
+            )}
+          />
+        </Stack>
+      </CardContent>
+      <CardActions>
+        <Button type="submit" disabled={!isValid} fullWidth>
+          Create
+        </Button>
+      </CardActions>
+    </Card>
   );
 });
 
@@ -81,7 +80,6 @@ CreateRoomForm.displayName = 'CreateRoomForm';
 
 CreateRoomForm.propTypes = {
   onCreateRoom: PropTypes.func.isRequired,
-  disableForm: PropTypes.bool,
 };
 
 export default CreateRoomForm;

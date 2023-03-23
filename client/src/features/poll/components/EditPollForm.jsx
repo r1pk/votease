@@ -35,6 +35,7 @@ const EditPollForm = forwardRef(({ onEditPoll, defaultValues, ...rest }, ref) =>
     resolver: joiResolver(schema),
   });
   const { fields, append, remove } = useFieldArray({ control: control, name: 'poll.choices' });
+  const { isValid, isDirty } = formState;
 
   const handleAddChoice = () => {
     append(`Choice ${fields.length + 1}`);
@@ -45,7 +46,7 @@ const EditPollForm = forwardRef(({ onEditPoll, defaultValues, ...rest }, ref) =>
   };
 
   const onSubmit = (data) => {
-    if (formState.isValid) {
+    if (isValid && isDirty) {
       onEditPoll(data);
     }
   };
@@ -104,7 +105,7 @@ const EditPollForm = forwardRef(({ onEditPoll, defaultValues, ...rest }, ref) =>
         </Stack>
       </CardContent>
       <CardActions>
-        <Button type="submit" disabled={!formState.isValid} fullWidth>
+        <Button type="submit" disabled={!(isValid && isDirty)} fullWidth>
           Edit
         </Button>
       </CardActions>
