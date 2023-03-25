@@ -13,7 +13,7 @@ import { UserList, LeaveRoomButton } from '@/features/room';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { useNavigationBlocker } from '@/hooks/useNavigationBlocker';
 
-import { colyseus } from '@/api/colyseus';
+import { colyseus } from '@/apis/colyseus';
 
 const Room = () => {
   const [isPollEditorEnabled, setIsPollEditorEnabled] = useState(false);
