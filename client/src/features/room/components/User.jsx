@@ -8,7 +8,7 @@ const User = forwardRef(({ user, isRoomOwner, ...rest }, ref) => {
   return (
     <Chip
       avatar={
-        <Avatar sx={{ backgroundColor: isRoomOwner ? 'secondary.main' : '' }}>
+        <Avatar sx={{ backgroundColor: isRoomOwner ? '#B66F1A' : '' }}>
           {isRoomOwner ? <Star /> : user.username.charAt(0)}
         </Avatar>
       }
