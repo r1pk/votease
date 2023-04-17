@@ -1,43 +1,49 @@
 # VotEase-server
 
-VotEase-server is a server written in [Node.js](https://nodejs.org/en/) using [Colyseus.js](https://www.colyseus.io/) framework for VotEase application.  
-Server is responsible for handling all communication between clients in specific rooms and managing room state.
+Repository contains the server-side application for [VotEase project](https://github.com/r1pk/votease-client). Server is written in Node.js and uses the [Colyseus](https://colyseus.io/) framework.
 
 ## Pre-requisites
 
-Server was developed and tested in a stable environment, utilizing the following versions:
+Application was developed and tested in a stable environment, utilizing the following versions:
 
 - [node.js v19.7.0](https://nodejs.org/en/)
 - [npm v9.6.0](https://nodejs.org/en/download/)
 
 This ensures that the application runs smoothly and efficiently.
 
-## Installation
+## Environment Variables
 
-Clone VotEase-server repository
-
-```bash
-git clone https://github.com/r1pk/votease-server.git master
-```
-
-Install all dependencies
+To run this project, you will need to add the following environment variables to your `.env` file
 
 ```bash
-cd ./master
-npm install
+NODE_ENV=development         # node environment
+COLYSEUS_MONITOR_PASSWORD=   # password for colyseus monitor
 ```
 
-Fill in all required environment variables in `.env` files
+## Run Locally
 
-```env
-NODE_ENV=production         # type of environment
-COLYSEUS_MONITOR_PASSWORD=  # password for colyseus monitor
-```
-
-Run server
+Clone the project
 
 ```bash
-npm start
+  git clone https://github.com/r1pk/votease-server.git
+```
+
+Go to the project directory
+
+```bash
+  cd votease-server
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Run the project locally
+
+```bash
+  npm start
 ```
 
 ## Project structure
