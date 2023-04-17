@@ -7,7 +7,7 @@ import ChoiceButton from './ChoiceButton';
 import LinearIndicator from './LinearIndicator';
 import UserAnswer from './UserAnswer';
 
-import { sumAnswersPerChoice } from '../utils/sumAnswersPerChoice';
+import { sumAnswersPerChoice } from '@/utils/sum-answers-per-choice';
 
 const Poll = forwardRef(({ poll, user, onSubmitChoice, ...rest }, ref) => {
   const answerCount = sumAnswersPerChoice(poll.choices, poll.answers);

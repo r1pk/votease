@@ -3,9 +3,9 @@ import { forwardRef } from 'react';
 
 import { Stack, Typography, Box, alpha } from '@mui/material';
 
-import { getPercentageValue } from '../utils/getPercentageValue';
-import { createColorFromHash } from '../utils/createColorFromHash';
-import { createLinearGradient } from '../utils/createLinearGradient';
+import { getPercentageValue } from '@/utils/get-percentage-value';
+import { createColorFromHash } from '@/utils/create-color-from-hash';
+import { createLinearGradient } from '@/utils/create-linear-gradient';
 
 const LinearIndicator = forwardRef(({ choice, votes, totalVotes, ...rest }, ref) => {
   const percentageValue = getPercentageValue(votes, totalVotes);

@@ -3,7 +3,7 @@ import { forwardRef } from 'react';
 
 import { Edit } from '@mui/icons-material';
 
-import Button from '@/components/form/Button';
+import Button from '@/components/common/Button';
 
 const TogglePollEditorButton = forwardRef(({ onTogglePollEditor, isPollEditorEnabled, ...rest }, ref) => {
   const handleButtonClick = () => {

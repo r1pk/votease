@@ -3,7 +3,7 @@ import { forwardRef } from 'react';
 
 import { RestartAlt } from '@mui/icons-material';
 
-import Button from '@/components/form/Button';
+import Button from '@/components/common/Button';
 
 const ResetPollAnswersButton = forwardRef(({ onResetPollAnswers, ...rest }, ref) => {
   const handleButtonClick = () => {

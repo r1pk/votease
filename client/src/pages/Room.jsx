@@ -7,8 +7,13 @@ import { toast } from 'react-toastify';
 
 import { Grid, Stack } from '@mui/material';
 
-import { Poll, TogglePollEditorButton, EditPollForm, ResetPollAnswersButton } from '@/features/poll';
-import { UserList, LeaveRoomButton } from '@/features/room';
+import UserList from '@/components/room/UserList';
+import LeaveRoomButton from '@/components/room/LeaveRoomButton';
+
+import Poll from '@/components/poll/Poll';
+import TogglePollEditorButton from '@/components/poll/TogglePollEditorButton';
+import EditPollForm from '@/components/poll/EditPollForm';
+import ResetPollAnswersButton from '@/components/poll/ResetPollAnswersButton';
 
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { useNavigationBlocker } from '@/hooks/useNavigationBlocker';

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 
-import Button from '@/components/form/Button';
+import Button from '@/components/common/Button';
 
 const ChoiceButton = forwardRef(({ choice, onClickChoice, ...rest }, ref) => {
   const handleButtonClick = () => {

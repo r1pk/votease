@@ -3,7 +3,7 @@ import { forwardRef } from 'react';
 
 import { Chip, alpha } from '@mui/material';
 
-import { createColorFromHash } from '../utils/createColorFromHash';
+import { createColorFromHash } from '@/utils/create-color-from-hash';
 
 const UserAnswer = forwardRef(({ answer, ...rest }, ref) => {
   const choiceColor = createColorFromHash(answer.choice.id);

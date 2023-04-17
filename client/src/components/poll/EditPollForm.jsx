@@ -6,9 +6,9 @@ import { Card, CardHeader, CardContent, CardActions, Stack, Paper, Divider } fro
 
 import { Add, Remove } from '@mui/icons-material';
 
-import Button from '@/components/form/Button';
-import TextField from '@/components/form/TextField';
-import IconButton from '@/components/form/IconButton';
+import Button from '@/components/common/Button';
+import TextField from '@/components/common/TextField';
+import IconButton from '@/components/common/IconButton';
 
 import { Controller, useForm, useFieldArray } from 'react-hook-form';
 import { joiResolver } from '@hookform/resolvers/joi';

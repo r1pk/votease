@@ -4,13 +4,13 @@ import Joi from 'joi';
 
 import { Card, CardHeader, CardContent, CardActions, Divider, Stack } from '@mui/material';
 
-import TextField from '@/components/form/TextField';
-import Button from '@/components/form/Button';
+import TextField from '@/components/common/TextField';
+import Button from '@/components/common/Button';
 
 import { Controller, useForm } from 'react-hook-form';
 import { joiResolver } from '@hookform/resolvers/joi';
 
-import { createRandomUsername } from '../utils/createRandomUsername';
+import { createRandomUsername } from '@/utils/create-random-username';
 
 const schema = Joi.object({
   username: Joi.string().trim().alphanum().min(3).max(20).required().label('username'),
