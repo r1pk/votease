@@ -2,7 +2,6 @@
   "private": true,
   "name": "votease-server",
   "version": "1.0.0",
-  "description": "Backend for VotEase application written in Node.js using Colyseus.js framework.",
   "main": "./src/index.js",
   "type": "module",
   "scripts": {
