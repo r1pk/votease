@@ -1,7 +1,6 @@
-# VotEase-client
+# VotEase
 
-VotEase-client is a responsive web application written in [React](https://reactjs.org/), allowing users to perform simple surveys in private rooms.  
-Application is built using [Vite](https://vitejs.dev/), [Redux](https://redux.js.org/), [React Router](https://reacttraining.com/react-router/) and [Material UI](https://mui.com/).
+VotEase is a responsive web application that allows users to perform simple and quick polls in private rooms. VotEase is built using technologies such as [React](https://reactjs.org/), [React-Router](https://reactrouter.com), [Redux](https://redux.js.org/), [Material-UI](https://mui.com/).
 
 ## Screenshots
 
@@ -16,52 +15,51 @@ Room page
 
 ## Pre-requisites
 
-VotEase was developed and tested in a stable environment, utilizing the following versions:
+Application was developed and tested in a stable environment, utilizing the following versions:
 
 - [node.js v19.7.0](https://nodejs.org/en/)
 - [npm v9.6.0](https://nodejs.org/en/download/)
 
 This ensures that the application runs smoothly and efficiently.
 
-## Installation
+## Environment Variables
 
-Clone VotEase-client repository
-
-```bash
-git clone https://github.com/r1pk/votease-client.git master
-```
-
-Install all dependencies
+To run this project, you will need to add the following environment variables to your `.env` file
 
 ```bash
-cd ./master
-npm install
-```
-
-Before running the application, configure the environment variables to provide the application with [server](https://github.com/r1pk/votease-server.git) address
-
-```env
-VITE_BASE_APP_TITLE=VotEase              # Application title used as a prefix for the document title
+VITE_BASE_APP_TITLE=VotEase              # Base application title
 VITE_COLYSEUS_URL=                       # Colyseus server address
 
 VITE_USERNAME_LOCALSTORAGE_KEY=username  # Local storage key used to store username
 ```
 
-Run the app in development mode
+## Run Locally
+
+Clone the project
 
 ```bash
-npm run dev
+  git clone https://github.com/r1pk/votease-client.git
 ```
 
-After running the application, open `localhost:5173` in your browser.
-
-Build the app for production to the `build` folder
+Go to the project directory
 
 ```bash
-npm run build
+  cd votease-client
 ```
 
-## Project structure
+Install dependencies
+
+```bash
+  npm install
+```
+
+Run the project locally
+
+```bash
+  npm run dev
+```
+
+## Project file structure
 
 ```bash
 public                            # static files
@@ -70,7 +68,7 @@ src
    |   |-- group                  # files grouped by specific api
    |   |   |-- index.js           # exports main api instance
    |-- components                 # components used across the application
-   |   |-- common                 # common components used across the application and other components
+   |   |-- common                 # common components used across the application
    |   |-- group                  # components grouped by their purpose
    |-- hooks                      # hooks used across the application
    |-- layouts                    # application layouts
@@ -91,16 +89,16 @@ src
 .env                              # file containing environment variables
 ```
 
-## Live demo
+## Demo
 
 Application is automatically deployed using Vercel.
 
-[Live demo](https://votease.vercel.app)
+[VotEase Live Demo](https://votease.vercel.app/)
 
-## Author
+## Authors
 
-- Patryk [r1pk](https://github.com/r1pk) Krawczyk
+- [@r1pk](https://github.com/r1pk)
 
 ## License
 
-- [MIT](https://choosealicense.com/licenses/mit/)
+[MIT](https://choosealicense.com/licenses/mit/)
