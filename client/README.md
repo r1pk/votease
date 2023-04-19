@@ -73,7 +73,6 @@ src
    |-- hooks                      # hooks used across the application
    |-- layouts                    # application layouts
    |   |-- layout                 # layout components grouped by their purpose
-   |   |   |-- index.js           # exports main layout component from the folder
    |-- pages                      # page components
    |-- redux                      # redux related files
    |   |-- slices                 # redux toolkit store slices
