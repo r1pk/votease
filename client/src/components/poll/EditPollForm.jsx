@@ -75,8 +75,8 @@ const EditPollForm = forwardRef(({ onEditPoll, defaultValues, ...rest }, ref) =>
               />
             )}
           />
-          <Paper elevation={3}>
-            <Stack spacing={2} sx={{ p: 2 }}>
+          <Paper elevation={3} sx={{ p: 2 }}>
+            <Stack spacing={2}>
               {fields.map((choice, index) => (
                 <Controller
                   key={choice.id}
