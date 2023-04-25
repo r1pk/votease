@@ -29,8 +29,6 @@ To run this project, you will need to add the following environment variables to
 ```bash
 VITE_BASE_APP_TITLE=VotEase              # Base application title
 VITE_COLYSEUS_URL=                       # Colyseus server address
-
-VITE_USERNAME_LOCALSTORAGE_KEY=username  # Local storage key used to store username
 ```
 
 ## Run Locally
