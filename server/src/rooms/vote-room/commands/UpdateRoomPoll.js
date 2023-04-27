@@ -6,8 +6,8 @@ import { Poll } from '../schemas/Poll.js';
 import { Choice } from '../schemas/Choice.js';
 
 export class UpdateRoomPoll extends Command {
-  validate({ enabled = true }) {
-    return enabled;
+  validate(payload = {}) {
+    return payload.enabled ?? true;
   }
 
   execute({ poll }) {

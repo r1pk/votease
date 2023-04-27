@@ -1,8 +1,8 @@
 import { Command } from '@colyseus/command';
 
 export class ResetPollAnswers extends Command {
-  validate({ enabled = true }) {
-    return enabled;
+  validate(payload = {}) {
+    return payload.enabled ?? true;
   }
 
   execute() {
