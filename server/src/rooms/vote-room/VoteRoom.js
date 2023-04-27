@@ -1,22 +1,22 @@
 import { Room } from '@colyseus/core';
 import { Dispatcher } from '@colyseus/command';
 
-import { RoomState } from '../schemas/RoomState.js';
+import { RoomState } from './schemas/RoomState.js';
 
-import { ValidateCastedAnswers } from '../commands/ValidateCastedAnswers.js';
-import { ValidateRoomPoll } from '../commands/ValidateRoomPoll.js';
-import { ValidateUserAnswer } from '../commands/ValidateUserAnswer.js';
-import { ValidateUsername } from '../commands/ValidateUsername.js';
-import { ValidateUsernameUniqueness } from '../commands/ValidateUsernameUniqueness.js';
-import { ValidateUserPermissions } from '../commands/ValidateUserPermissions.js';
+import { ValidateCastedAnswers } from './commands/ValidateCastedAnswers.js';
+import { ValidateRoomPoll } from './commands/ValidateRoomPoll.js';
+import { ValidateUserAnswer } from './commands/ValidateUserAnswer.js';
+import { ValidateUsername } from './commands/ValidateUsername.js';
+import { ValidateUsernameUniqueness } from './commands/ValidateUsernameUniqueness.js';
+import { ValidateUserPermissions } from './commands/ValidateUserPermissions.js';
 
-import { CreateUserAnswer } from '../commands/CreateUserAnswer.js';
-import { CreateUserInstance } from '../commands/CreateUserInstance.js';
-import { DeleteUserAnswer } from '../commands/DeleteUserAnswer.js';
-import { DeleteUserInstance } from '../commands/DeleteUserInstance.js';
-import { ResetPollAnswers } from '../commands/ResetPollAnswers.js';
-import { SetRoomOwner } from '../commands/SetRoomOwner.js';
-import { UpdateRoomPoll } from '../commands/UpdateRoomPoll.js';
+import { CreateUserAnswer } from './commands/CreateUserAnswer.js';
+import { CreateUserInstance } from './commands/CreateUserInstance.js';
+import { DeleteUserAnswer } from './commands/DeleteUserAnswer.js';
+import { DeleteUserInstance } from './commands/DeleteUserInstance.js';
+import { ResetPollAnswers } from './commands/ResetPollAnswers.js';
+import { SetRoomOwner } from './commands/SetRoomOwner.js';
+import { UpdateRoomPoll } from './commands/UpdateRoomPoll.js';
 
 import { logger } from '##/logger.js';
 

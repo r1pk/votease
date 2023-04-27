@@ -2,7 +2,7 @@ import Arena from '@colyseus/arena';
 import { monitor } from '@colyseus/monitor';
 import expressBasicAuth from 'express-basic-auth';
 
-import { VoteRoom } from './features/vote-room/index.js';
+import { VoteRoom } from './rooms/vote-room/index.js';
 
 export default Arena.default({
   getId: () => 'VotEase Server',
