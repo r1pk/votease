@@ -1,6 +1,10 @@
 import { Command } from '@colyseus/command';
 
 export class ValidateUserAnswer extends Command {
+  validate({ enabled = true }) {
+    return enabled;
+  }
+
   execute({ choiceId }) {
     const choiceIndex = this.state.poll.choices.findIndex((choice) => choice.id === choiceId);
 

@@ -3,6 +3,10 @@ import { Command } from '@colyseus/command';
 import { Answer } from '../schemas/Answer.js';
 
 export class CreateUserAnswer extends Command {
+  validate({ enabled = true }) {
+    return enabled;
+  }
+
   execute({ choiceId, userId }) {
     const answer = new Answer().assign({
       user: this.state.users.get(userId),

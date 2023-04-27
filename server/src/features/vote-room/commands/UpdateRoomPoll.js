@@ -6,6 +6,10 @@ import { Poll } from '../schemas/Poll.js';
 import { Choice } from '../schemas/Choice.js';
 
 export class UpdateRoomPoll extends Command {
+  validate({ enabled = true }) {
+    return enabled;
+  }
+
   execute({ poll }) {
     this.state.poll = new Poll().assign({
       title: poll.title,

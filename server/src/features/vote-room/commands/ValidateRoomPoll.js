@@ -3,6 +3,10 @@ import { Command } from '@colyseus/command';
 import Joi from 'joi';
 
 export class ValidateRoomPoll extends Command {
+  validate({ enabled = true }) {
+    return enabled;
+  }
+
   execute({ poll }) {
     Joi.attempt(
       poll,

@@ -52,7 +52,7 @@ export class VoteRoom extends Room {
         username: options.username,
       });
       this.dispatcher.dispatch(new SetRoomOwner(), {
-        requirement: this.state.users.size === 1,
+        enabled: this.state.users.size === 1,
         userId: client.sessionId,
       });
 
@@ -71,7 +71,7 @@ export class VoteRoom extends Room {
         userId: client.sessionId,
       });
       this.dispatcher.dispatch(new SetRoomOwner(), {
-        requirement: this.state.users.size > 0 && this.state.owner.id === client.sessionId,
+        enabled: this.state.users.size > 0 && this.state.owner.id === client.sessionId,
         userId: this.state.users.keys().next().value,
       });
 
