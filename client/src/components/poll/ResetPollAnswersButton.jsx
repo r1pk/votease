@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 
+import { Button } from '@mui/material';
 import { RestartAlt } from '@mui/icons-material';
-
-import Button from '@/components/common/Button';
 
 const ResetPollAnswersButton = forwardRef(({ onResetPollAnswers, ...rest }, ref) => {
   const handleButtonClick = () => {
@@ -11,7 +10,7 @@ const ResetPollAnswersButton = forwardRef(({ onResetPollAnswers, ...rest }, ref)
   };
 
   return (
-    <Button startIcon={<RestartAlt />} onClick={handleButtonClick} ref={ref} {...rest}>
+    <Button size="small" variant="contained" startIcon={<RestartAlt />} onClick={handleButtonClick} ref={ref} {...rest}>
       Reset Poll Answers
     </Button>
   );

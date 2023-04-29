@@ -2,10 +2,7 @@ import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 import Joi from 'joi';
 
-import { Card, CardHeader, CardContent, CardActions, Divider, Stack } from '@mui/material';
-
-import TextField from '@/components/common/TextField';
-import Button from '@/components/common/Button';
+import { Card, CardHeader, CardContent, CardActions, Divider, Stack, TextField, Button } from '@mui/material';
 
 import { Controller, useForm } from 'react-hook-form';
 import { joiResolver } from '@hookform/resolvers/joi';
@@ -51,6 +48,8 @@ const JoinRoomForm = forwardRef(({ onJoinRoom, roomId, ...rest }, ref) => {
             control={control}
             render={({ field, fieldState }) => (
               <TextField
+                size="small"
+                variant="outlined"
                 label="Room ID"
                 error={Boolean(fieldState.error)}
                 helperText={fieldState.error?.message}
@@ -65,6 +64,8 @@ const JoinRoomForm = forwardRef(({ onJoinRoom, roomId, ...rest }, ref) => {
             control={control}
             render={({ field, fieldState }) => (
               <TextField
+                size="small"
+                variant="outlined"
                 label="Username"
                 error={Boolean(fieldState.error)}
                 helperText={fieldState.error?.message}
@@ -76,7 +77,7 @@ const JoinRoomForm = forwardRef(({ onJoinRoom, roomId, ...rest }, ref) => {
         </Stack>
       </CardContent>
       <CardActions>
-        <Button type="submit" disabled={!isValid} fullWidth>
+        <Button size="small" variant="contained" type="submit" disabled={!isValid} fullWidth>
           Join
         </Button>
       </CardActions>

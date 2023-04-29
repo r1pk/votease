@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 
+import { Button } from '@mui/material';
 import { Edit } from '@mui/icons-material';
-
-import Button from '@/components/common/Button';
 
 const TogglePollEditorButton = forwardRef(({ onTogglePollEditor, isPollEditorEnabled, ...rest }, ref) => {
   const handleButtonClick = () => {
@@ -11,7 +10,7 @@ const TogglePollEditorButton = forwardRef(({ onTogglePollEditor, isPollEditorEna
   };
 
   return (
-    <Button startIcon={<Edit />} onClick={handleButtonClick} ref={ref} {...rest}>
+    <Button size="small" variant="contained" startIcon={<Edit />} onClick={handleButtonClick} ref={ref} {...rest}>
       {isPollEditorEnabled ? 'Close Poll Editor' : 'Show Poll Editor'}
     </Button>
   );

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 
-import Button from '@/components/common/Button';
+import { Button } from '@mui/material';
 
 const ChoiceButton = forwardRef(({ choice, onClickChoice, ...rest }, ref) => {
   const handleButtonClick = () => {
@@ -9,7 +9,7 @@ const ChoiceButton = forwardRef(({ choice, onClickChoice, ...rest }, ref) => {
   };
 
   return (
-    <Button size="large" onClick={handleButtonClick} sx={{ py: 2 }} ref={ref} {...rest}>
+    <Button size="large" variant="contained" onClick={handleButtonClick} sx={{ py: 2 }} ref={ref} {...rest}>
       {choice.title}
     </Button>
   );

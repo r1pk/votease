@@ -2,13 +2,19 @@ import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 import Joi from 'joi';
 
-import { Card, CardHeader, CardContent, CardActions, Stack, Paper, Divider } from '@mui/material';
-
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardActions,
+  Stack,
+  Paper,
+  Divider,
+  Button,
+  TextField,
+  IconButton,
+} from '@mui/material';
 import { Add, Remove } from '@mui/icons-material';
-
-import Button from '@/components/common/Button';
-import TextField from '@/components/common/TextField';
-import IconButton from '@/components/common/IconButton';
 
 import { Controller, useForm, useFieldArray } from 'react-hook-form';
 import { joiResolver } from '@hookform/resolvers/joi';
@@ -68,6 +74,8 @@ const EditPollForm = forwardRef(({ onEditPoll, defaultValues, ...rest }, ref) =>
             name="poll.title"
             render={({ field, fieldState }) => (
               <TextField
+                size="small"
+                variant="outlined"
                 label="Poll title"
                 error={Boolean(fieldState.error)}
                 helperText={fieldState.error?.message}
@@ -84,6 +92,8 @@ const EditPollForm = forwardRef(({ onEditPoll, defaultValues, ...rest }, ref) =>
                   name={`poll.choices.${index}`}
                   render={({ field, fieldState }) => (
                     <TextField
+                      size="small"
+                      variant="outlined"
                       label={`Choice ${index + 1}`}
                       error={Boolean(fieldState.error)}
                       helperText={fieldState.error?.message}
@@ -93,10 +103,10 @@ const EditPollForm = forwardRef(({ onEditPoll, defaultValues, ...rest }, ref) =>
                 />
               ))}
               <Stack direction="row" spacing={1} sx={{ justifyContent: 'center' }}>
-                <IconButton onClick={handleAddChoice}>
+                <IconButton size="small" onClick={handleAddChoice}>
                   <Add />
                 </IconButton>
-                <IconButton onClick={handleRemoveChoice} disabled={fields.length <= 2}>
+                <IconButton size="small" onClick={handleRemoveChoice} disabled={fields.length <= 2}>
                   <Remove />
                 </IconButton>
               </Stack>
@@ -105,7 +115,7 @@ const EditPollForm = forwardRef(({ onEditPoll, defaultValues, ...rest }, ref) =>
         </Stack>
       </CardContent>
       <CardActions>
-        <Button type="submit" disabled={!(isValid && isDirty)} fullWidth>
+        <Button size="small" variant="contained" type="submit" disabled={!(isValid && isDirty)} fullWidth>
           Edit
         </Button>
       </CardActions>
