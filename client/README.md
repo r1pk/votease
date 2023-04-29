@@ -5,10 +5,10 @@ VotEase is a responsive web application that allows users to perform simple and 
 ## Screenshots
 
 Create room page
-![Create Room Page](https://i.imgur.com/YkaHBey.png)
+![Create Room Page](https://i.imgur.com/QnHY4Xg.png)
 
 Join room page
-![Join Room Page](https://i.imgur.com/Natc3Aj.png)
+![Join Room Page](https://i.imgur.com/bNyRCEB.png)
 
 Room page
 ![Room Page](https://i.imgur.com/YGDzb9A.png)

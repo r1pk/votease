@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 import Joi from 'joi';
 
-import { Card, CardHeader, CardContent, CardActions, Divider, Stack, TextField, Button } from '@mui/material';
+import { Card, CardHeader, CardContent, CardActions, Stack, TextField, Button } from '@mui/material';
 
 import { Controller, useForm } from 'react-hook-form';
 import { joiResolver } from '@hookform/resolvers/joi';
@@ -42,11 +42,10 @@ const CreateRoomForm = forwardRef(({ onCreateRoom, ...rest }, ref) => {
       <CardHeader
         title="Create Room"
         titleTypographyProps={{
-          variant: 'h5',
+          variant: 'overline',
         }}
-        sx={{ textAlign: 'center' }}
+        sx={{ textAlign: 'center', p: 1 }}
       />
-      <Divider />
       <CardContent>
         <Stack direction="column" spacing={1}>
           <Controller
