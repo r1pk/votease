@@ -49,7 +49,6 @@ const JoinRoomForm = forwardRef(({ onJoinRoom, roomId, ...rest }, ref) => {
             render={({ field, fieldState }) => (
               <TextField
                 size="small"
-                variant="outlined"
                 label="Room ID"
                 error={Boolean(fieldState.error)}
                 helperText={fieldState.error?.message}
@@ -65,7 +64,6 @@ const JoinRoomForm = forwardRef(({ onJoinRoom, roomId, ...rest }, ref) => {
             render={({ field, fieldState }) => (
               <TextField
                 size="small"
-                variant="outlined"
                 label="Username"
                 error={Boolean(fieldState.error)}
                 helperText={fieldState.error?.message}

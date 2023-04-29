@@ -55,7 +55,6 @@ const CreateRoomForm = forwardRef(({ onCreateRoom, ...rest }, ref) => {
             render={({ field, fieldState }) => (
               <TextField
                 size="small"
-                variant="outlined"
                 label="Username"
                 error={Boolean(fieldState.error)}
                 helperText={fieldState.error?.message}

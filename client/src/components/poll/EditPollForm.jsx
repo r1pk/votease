@@ -75,7 +75,6 @@ const EditPollForm = forwardRef(({ onEditPoll, defaultValues, ...rest }, ref) =>
             render={({ field, fieldState }) => (
               <TextField
                 size="small"
-                variant="outlined"
                 label="Poll title"
                 error={Boolean(fieldState.error)}
                 helperText={fieldState.error?.message}
@@ -93,7 +92,6 @@ const EditPollForm = forwardRef(({ onEditPoll, defaultValues, ...rest }, ref) =>
                   render={({ field, fieldState }) => (
                     <TextField
                       size="small"
-                      variant="outlined"
                       label={`Choice ${index + 1}`}
                       error={Boolean(fieldState.error)}
                       helperText={fieldState.error?.message}
