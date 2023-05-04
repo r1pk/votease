@@ -3,14 +3,14 @@ import { forwardRef } from 'react';
 
 import { Paper, Stack } from '@mui/material';
 
-import User from './User';
+import UserChip from './UserChip';
 
 const UserList = forwardRef(({ users, owner, ...rest }, ref) => {
   return (
     <Paper sx={{ p: 1 }} ref={ref} {...rest}>
       <Stack direction="row" sx={{ flexWrap: 'wrap', gap: 1 }}>
         {users.map((user) => (
-          <User key={user.id} user={user} isRoomOwner={user.id === owner.id} />
+          <UserChip key={user.id} user={user} isRoomOwner={user.id === owner.id} />
         ))}
       </Stack>
     </Paper>

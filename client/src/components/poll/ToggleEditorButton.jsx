@@ -4,7 +4,7 @@ import { forwardRef } from 'react';
 import { Button } from '@mui/material';
 import { Edit } from '@mui/icons-material';
 
-const TogglePollEditorButton = forwardRef(({ onTogglePollEditor, isPollEditorEnabled, ...rest }, ref) => {
+const ToggleEditorButton = forwardRef(({ onTogglePollEditor, isPollEditorEnabled, ...rest }, ref) => {
   const handleButtonClick = () => {
     onTogglePollEditor();
   };
@@ -16,11 +16,11 @@ const TogglePollEditorButton = forwardRef(({ onTogglePollEditor, isPollEditorEna
   );
 });
 
-TogglePollEditorButton.displayName = 'TogglePollEditorButton';
+ToggleEditorButton.displayName = 'ToggleEditorButton';
 
-TogglePollEditorButton.propTypes = {
+ToggleEditorButton.propTypes = {
   onTogglePollEditor: PropTypes.func.isRequired,
   isPollEditorEnabled: PropTypes.bool.isRequired,
 };
 
-export default TogglePollEditorButton;
+export default ToggleEditorButton;

@@ -4,7 +4,7 @@ import { forwardRef } from 'react';
 import { Button } from '@mui/material';
 import { RestartAlt } from '@mui/icons-material';
 
-const ResetPollAnswersButton = forwardRef(({ onResetPollAnswers, ...rest }, ref) => {
+const ResetAnswersButton = forwardRef(({ onResetPollAnswers, ...rest }, ref) => {
   const handleButtonClick = () => {
     onResetPollAnswers();
   };
@@ -16,10 +16,10 @@ const ResetPollAnswersButton = forwardRef(({ onResetPollAnswers, ...rest }, ref)
   );
 });
 
-ResetPollAnswersButton.displayName = 'ResetPollAnswersButton';
+ResetAnswersButton.displayName = 'ResetAnswersButton';
 
-ResetPollAnswersButton.propTypes = {
+ResetAnswersButton.propTypes = {
   onResetPollAnswers: PropTypes.func.isRequired,
 };
 
-export default ResetPollAnswersButton;
+export default ResetAnswersButton;

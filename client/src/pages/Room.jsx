@@ -11,9 +11,9 @@ import UserList from '@/components/room/UserList';
 import LeaveRoomButton from '@/components/room/LeaveRoomButton';
 
 import Poll from '@/components/poll/Poll';
-import TogglePollEditorButton from '@/components/poll/TogglePollEditorButton';
-import EditPollForm from '@/components/poll/EditPollForm';
-import ResetPollAnswersButton from '@/components/poll/ResetPollAnswersButton';
+import ToggleEditorButton from '@/components/poll/ToggleEditorButton';
+import PollEditor from '@/components/poll/PollEditor';
+import ResetAnswersButton from '@/components/poll/ResetAnswersButton';
 
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { useNavigationBlocker } from '@/hooks/useNavigationBlocker';
@@ -80,15 +80,15 @@ const Room = () => {
         <Stack spacing={2}>
           {isCurrentUserRoomOwner && (
             <Stack direction={{ xs: 'column', md: 'row' }} spacing={1} sx={{ justifyContent: 'flex-end' }}>
-              <TogglePollEditorButton
+              <ToggleEditorButton
                 onTogglePollEditor={handleTogglePollEditor}
                 isPollEditorEnabled={isPollEditorEnabled}
               />
-              <ResetPollAnswersButton onResetPollAnswers={handleResetPollAnswers} />
+              <ResetAnswersButton onResetPollAnswers={handleResetPollAnswers} />
             </Stack>
           )}
           {!isPollEditorEnabled && <Poll poll={poll} user={user} onSubmitChoice={handleSubmitChoice} />}
-          {isPollEditorEnabled && <EditPollForm onEditPoll={handleEditPoll} defaultValues={{ poll: plainPoll }} />}
+          {isPollEditorEnabled && <PollEditor onEditPoll={handleEditPoll} defaultValues={{ poll: plainPoll }} />}
           <UserList users={users} owner={owner} />
           <Stack direction="row" sx={{ justifyContent: 'flex-end' }}>
             <LeaveRoomButton onLeaveRoom={handleLeaveRoom} />

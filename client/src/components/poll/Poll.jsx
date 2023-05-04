@@ -5,7 +5,7 @@ import { Card, CardHeader, CardActions, CardContent, Divider, Stack } from '@mui
 
 import ChoiceButton from './ChoiceButton';
 import LinearIndicator from './LinearIndicator';
-import UserAnswer from './UserAnswer';
+import UserAnswerChip from './UserAnswerChip';
 
 import { sumAnswersPerChoice } from '@/utils/sum-answers-per-choice';
 
@@ -51,7 +51,7 @@ const Poll = forwardRef(({ poll, user, onSubmitChoice, ...rest }, ref) => {
       <CardContent>
         <Stack direction="row" sx={{ flexWrap: 'wrap', gap: 1 }}>
           {poll.answers.map((answer) => (
-            <UserAnswer key={answer.user.id} answer={answer} />
+            <UserAnswerChip key={answer.user.id} answer={answer} />
           ))}
         </Stack>
       </CardContent>

@@ -26,7 +26,7 @@ const schema = Joi.object({
   }),
 });
 
-const EditPollForm = forwardRef(({ onEditPoll, defaultValues, ...rest }, ref) => {
+const PollEditor = forwardRef(({ onEditPoll, defaultValues, ...rest }, ref) => {
   const { control, formState, handleSubmit } = useForm({
     mode: 'all',
     defaultValues: Object.assign(
@@ -121,9 +121,9 @@ const EditPollForm = forwardRef(({ onEditPoll, defaultValues, ...rest }, ref) =>
   );
 });
 
-EditPollForm.displayName = 'EditPollForm';
+PollEditor.displayName = 'PollEditor';
 
-EditPollForm.propTypes = {
+PollEditor.propTypes = {
   onEditPoll: PropTypes.func.isRequired,
   defaultValues: PropTypes.shape({
     poll: PropTypes.shape({
@@ -133,4 +133,4 @@ EditPollForm.propTypes = {
   }),
 };
 
-export default EditPollForm;
+export default PollEditor;

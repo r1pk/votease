@@ -4,7 +4,7 @@ import { forwardRef } from 'react';
 import { Chip, Avatar } from '@mui/material';
 import { Star } from '@mui/icons-material';
 
-const User = forwardRef(({ user, isRoomOwner, ...rest }, ref) => {
+const UserChip = forwardRef(({ user, isRoomOwner, ...rest }, ref) => {
   return (
     <Chip
       avatar={
@@ -19,9 +19,9 @@ const User = forwardRef(({ user, isRoomOwner, ...rest }, ref) => {
   );
 });
 
-User.displayName = 'User';
+UserChip.displayName = 'UserChip';
 
-User.propTypes = {
+UserChip.propTypes = {
   user: PropTypes.shape({
     id: PropTypes.string.isRequired,
     username: PropTypes.string.isRequired,
@@ -29,4 +29,4 @@ User.propTypes = {
   isRoomOwner: PropTypes.bool.isRequired,
 };
 
-export default User;
+export default UserChip;
