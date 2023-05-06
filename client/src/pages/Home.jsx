@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
 
-import { Grid, Stack, Paper, Typography, Tabs, Tab } from '@mui/material';
+import { Unstable_Grid2 as Grid } from '@mui/material';
+import { Stack, Paper, Typography, Tabs, Tab } from '@mui/material';
 
 import JoinRoomForm from '@/components/room/JoinRoomForm';
 import CreateRoomForm from '@/components/room/CreateRoomForm';

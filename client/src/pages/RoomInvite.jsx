@@ -3,7 +3,8 @@ import { useNavigate, useParams, Link as RouterLink } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
 
-import { Grid, Stack, Paper, Typography, Link } from '@mui/material';
+import { Unstable_Grid2 as Grid } from '@mui/material';
+import { Stack, Paper, Typography, Link } from '@mui/material';
 
 import JoinRoomForm from '@/components/room/JoinRoomForm';
 

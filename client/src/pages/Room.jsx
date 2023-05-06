@@ -5,7 +5,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
 
-import { Grid, Stack } from '@mui/material';
+import { Unstable_Grid2 as Grid } from '@mui/material';
+import { Stack } from '@mui/material';
 
 import UserList from '@/components/room/UserList';
 import LeaveRoomButton from '@/components/room/LeaveRoomButton';
