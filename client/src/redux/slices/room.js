@@ -6,11 +6,6 @@ const initialState = {
     id: '',
     username: '',
   },
-  poll: {
-    title: '',
-    choices: [],
-    answers: [],
-  },
   users: [],
 };
 
@@ -19,16 +14,14 @@ const slice = createSlice({
   initialState: initialState,
   reducers: {
     setRoomId: (state, action) => {
-      state.id = action.payload.id;
+      state.id = action.payload;
     },
-    updateState: (state, action) => {
+    setRoomUsers: (state, action) => {
       state.owner = action.payload.owner;
-      state.poll = action.payload.poll;
       state.users = action.payload.users;
     },
-    resetState: () => initialState,
+    resetRoomState: () => initialState,
   },
 });
 
-export const actions = slice.actions;
-export default slice.reducer;
+export default slice;

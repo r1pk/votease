@@ -24,16 +24,14 @@ import { colyseus } from '@/apis/colyseus';
 const Room = () => {
   const [isPollEditorEnabled, setIsPollEditorEnabled] = useState(false);
 
-  const roomId = useSelector((store) => store.room.id);
-  const poll = useSelector((store) => store.room.poll);
-  const owner = useSelector((store) => store.room.owner);
-  const user = useSelector((store) => store.session.user);
-  const users = useSelector((store) => store.room.users);
+  const poll = useSelector((store) => store.poll);
+  const room = useSelector((store) => store.room);
+  const session = useSelector((store) => store.session);
 
   const navigate = useNavigate();
 
-  const isCurrentUserRoomMember = Boolean(roomId);
-  const isCurrentUserRoomOwner = user.id === owner.id;
+  const isCurrentUserRoomMember = Boolean(room.id);
+  const isCurrentUserRoomOwner = session.user.id === room.owner.id;
 
   const plainPoll = {
     title: poll.title,
@@ -88,9 +86,9 @@ const Room = () => {
               <ResetAnswersButton onResetPollAnswers={handleResetPollAnswers} />
             </Stack>
           )}
-          {!isPollEditorEnabled && <Poll poll={poll} user={user} onSubmitChoice={handleSubmitChoice} />}
+          {!isPollEditorEnabled && <Poll poll={poll} user={session.user} onSubmitChoice={handleSubmitChoice} />}
           {isPollEditorEnabled && <PollEditor onEditPoll={handleEditPoll} defaultValues={{ poll: plainPoll }} />}
-          <UserList users={users} owner={owner} />
+          <UserList users={room.users} owner={room.owner} />
           <Stack direction="row" sx={{ justifyContent: 'flex-end' }}>
             <LeaveRoomButton onLeaveRoom={handleLeaveRoom} />
           </Stack>

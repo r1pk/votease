@@ -1,13 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
 import thunk from 'redux-thunk';
 
-import session from './slices/session';
+import poll from './slices/poll';
 import room from './slices/room';
+import session from './slices/session';
 
 export const store = configureStore({
   reducer: {
-    session: session,
-    room: room,
+    poll: poll.reducer,
+    room: room.reducer,
+    session: session.reducer,
   },
   middleware: [thunk],
 });
