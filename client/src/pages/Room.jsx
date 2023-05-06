@@ -75,7 +75,7 @@ const Room = () => {
 
   return (
     <Grid container sx={{ justifyContent: 'center' }}>
-      <Grid item xs={12} sm={8} md={6} lg={4}>
+      <Grid xs={12} sm={8} md={6} lg={4}>
         <Stack spacing={2}>
           {isCurrentUserRoomOwner && (
             <Stack direction={{ xs: 'column', md: 'row' }} spacing={1} sx={{ justifyContent: 'flex-end' }}>
