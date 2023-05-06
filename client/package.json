@@ -16,7 +16,7 @@
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.6",
     "@reduxjs/toolkit": "^1.9.1",
-    "colyseus.js": "^0.14.13",
+    "colyseus.js": "^0.15.6",
     "joi": "^17.7.0",
     "nanoid": "^4.0.0",
     "react": "^18.2.0",

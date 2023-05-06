@@ -1,11 +1,14 @@
-import Arena from '@colyseus/arena';
+import config from '@colyseus/tools';
+import { WebSocketTransport } from '@colyseus/ws-transport';
 import { monitor } from '@colyseus/monitor';
 import expressBasicAuth from 'express-basic-auth';
 
 import { VoteRoom } from './rooms/vote-room/index.js';
 
-export default Arena.default({
+export default config.default({
   getId: () => 'VotEase Server',
+
+  initializeTransport: () => new WebSocketTransport(),
 
   beforeListen: () => {},
 
