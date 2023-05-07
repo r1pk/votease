@@ -16,9 +16,12 @@ const slice = createSlice({
     setRoomId: (state, action) => {
       state.id = action.payload;
     },
+    setRoomOwner: (state, action) => {
+      state.owner.id = action.payload.id;
+      state.owner.username = action.payload.username;
+    },
     setRoomUsers: (state, action) => {
-      state.owner = action.payload.owner;
-      state.users = action.payload.users;
+      state.users = action.payload;
     },
   },
 });

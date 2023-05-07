@@ -63,11 +63,12 @@ const Room = () => {
 
   useEffect(
     function setupCoreListeners() {
-      const handleRoomStateChange = (state) => {
+      const handleRoomState = (state) => {
         const { poll, owner, users } = JSON.parse(JSON.stringify(state));
 
         dispatch(actions.poll.setPollState(poll));
-        dispatch(actions.room.setRoomUsers({ owner: owner, users: Object.values(users) }));
+        dispatch(actions.room.setRoomOwner(owner));
+        dispatch(actions.room.setRoomUsers(Object.values(users)));
       };
 
       const handleRoomError = (code, message) => {
@@ -75,7 +76,7 @@ const Room = () => {
         toast.error(message);
       };
 
-      colyseus.room.onStateChange(handleRoomStateChange);
+      colyseus.room.onStateChange(handleRoomState);
       colyseus.room.onError(handleRoomError);
 
       return function cleanup() {
