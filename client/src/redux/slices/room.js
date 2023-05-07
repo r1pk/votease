@@ -20,7 +20,6 @@ const slice = createSlice({
       state.owner = action.payload.owner;
       state.users = action.payload.users;
     },
-    resetRoomState: () => initialState,
   },
 });
 

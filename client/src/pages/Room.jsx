@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
@@ -17,9 +17,9 @@ import PollEditor from '@/components/poll/PollEditor';
 import ResetAnswersButton from '@/components/poll/ResetAnswersButton';
 
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
-import { useNavigationBlocker } from '@/hooks/useNavigationBlocker';
 
 import { colyseus } from '@/apis/colyseus';
+import { actions } from '@/redux/actions';
 
 const Room = () => {
   const [isPollEditorEnabled, setIsPollEditorEnabled] = useState(false);
@@ -28,9 +28,9 @@ const Room = () => {
   const room = useSelector((store) => store.room);
   const session = useSelector((store) => store.session);
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const isCurrentUserRoomMember = Boolean(room.id);
   const isCurrentUserRoomOwner = session.user.id === room.owner.id;
 
   const plainPoll = {
@@ -54,24 +54,40 @@ const Room = () => {
   };
 
   const handleLeaveRoom = async () => {
-    try {
-      await colyseus.room.leave();
-      navigate('/');
-    } catch (error) {
-      toast.error(error.message);
-    }
-  };
-
-  const handleLeavePage = () => {
     colyseus.room.leave();
+    dispatch(actions.store.clear());
+    navigate('/');
   };
 
   const handleTogglePollEditor = () => {
     setIsPollEditorEnabled(!isPollEditorEnabled);
   };
 
+  useEffect(
+    function setupCoreListeners() {
+      const handleRoomStateChange = (state) => {
+        const { poll, owner, users } = JSON.parse(JSON.stringify(state));
+
+        dispatch(actions.poll.setPollState(poll));
+        dispatch(actions.room.setRoomUsers({ owner: owner, users: Object.values(users) }));
+      };
+
+      const handleRoomError = (code, message) => {
+        console.error(`Room error: ${code} - ${message}`);
+        toast.error(message);
+      };
+
+      colyseus.room.onStateChange(handleRoomStateChange);
+      colyseus.room.onError(handleRoomError);
+
+      return function cleanup() {
+        colyseus.room.removeAllListeners();
+      };
+    },
+    [dispatch]
+  );
+
   useDocumentTitle('Room');
-  useNavigationBlocker(handleLeavePage, isCurrentUserRoomMember);
 
   return (
     <Grid container sx={{ justifyContent: 'center' }}>

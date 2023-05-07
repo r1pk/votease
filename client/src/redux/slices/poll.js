@@ -15,7 +15,6 @@ const slice = createSlice({
       state.choices = action.payload.choices;
       state.answers = action.payload.answers;
     },
-    resetPollState: () => initialState,
   },
 });
 
