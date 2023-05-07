@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,7 +9,6 @@ import { Stack } from '@mui/material';
 
 import UserList from '@/components/room/UserList';
 import LeaveRoomButton from '@/components/room/LeaveRoomButton';
-
 import Poll from '@/components/poll/Poll';
 import ToggleEditorButton from '@/components/poll/ToggleEditorButton';
 import PollEditor from '@/components/poll/PollEditor';
