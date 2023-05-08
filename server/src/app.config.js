@@ -8,9 +8,11 @@ import { VoteRoom } from './rooms/vote-room/index.js';
 export default config.default({
   getId: () => 'VotEase Server',
 
-  initializeTransport: () => new WebSocketTransport(),
-
   beforeListen: () => {},
+
+  initializeTransport: (options) => {
+    return new WebSocketTransport(options);
+  },
 
   initializeGameServer: (gameServer) => {
     gameServer.define('vote-room', VoteRoom);
