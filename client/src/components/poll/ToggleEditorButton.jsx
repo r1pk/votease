@@ -1,8 +1,9 @@
-import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 
-import { Button } from '@mui/material';
+import PropTypes from 'prop-types';
+
 import { Edit } from '@mui/icons-material';
+import { Button } from '@mui/material';
 
 const ToggleEditorButton = forwardRef(({ onTogglePollEditor, isPollEditorEnabled, ...rest }, ref) => {
   const handleButtonClick = () => {

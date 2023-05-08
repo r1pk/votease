@@ -1,16 +1,15 @@
 import { useDispatch } from 'react-redux';
 import { useNavigate, useParams, Link as RouterLink } from 'react-router-dom';
-
 import { toast } from 'react-toastify';
 
-import { Unstable_Grid2 as Grid } from '@mui/material';
-import { Stack, Paper, Typography, Link } from '@mui/material';
+import { Unstable_Grid2 as Grid, Stack, Paper, Typography, Link } from '@mui/material';
 
 import JoinRoomForm from '@/components/room/JoinRoomForm';
 
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 
 import { colyseus } from '@/apis/colyseus';
+
 import { actions } from '@/redux/actions';
 
 const RoomInvite = () => {

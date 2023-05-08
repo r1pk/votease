@@ -1,13 +1,14 @@
-import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 
+import PropTypes from 'prop-types';
+
 import { Card, CardHeader, CardActions, CardContent, Divider, Stack } from '@mui/material';
+
+import { sumAnswersPerChoice } from '@/utils/sum-answers-per-choice';
 
 import ChoiceButton from './ChoiceButton';
 import LinearIndicator from './LinearIndicator';
 import UserAnswerChip from './UserAnswerChip';
-
-import { sumAnswersPerChoice } from '@/utils/sum-answers-per-choice';
 
 const Poll = forwardRef(({ poll, user, onSubmitChoice, ...rest }, ref) => {
   const answerCount = sumAnswersPerChoice(poll.choices, poll.answers);

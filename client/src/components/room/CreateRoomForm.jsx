@@ -1,11 +1,12 @@
-import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
+
+import PropTypes from 'prop-types';
+
+import { joiResolver } from '@hookform/resolvers/joi';
 import Joi from 'joi';
+import { Controller, useForm } from 'react-hook-form';
 
 import { Card, CardHeader, CardContent, CardActions, Stack, TextField, Button } from '@mui/material';
-
-import { Controller, useForm } from 'react-hook-form';
-import { joiResolver } from '@hookform/resolvers/joi';
 
 import { createRandomUsername } from '@/utils/create-random-username';
 

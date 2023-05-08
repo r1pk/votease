@@ -1,8 +1,9 @@
-import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 
-import { Chip, Avatar } from '@mui/material';
+import PropTypes from 'prop-types';
+
 import { Star } from '@mui/icons-material';
+import { Chip, Avatar } from '@mui/material';
 
 const UserChip = forwardRef(({ user, isRoomOwner, ...rest }, ref) => {
   return (

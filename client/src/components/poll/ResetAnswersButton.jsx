@@ -1,8 +1,9 @@
-import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 
-import { Button } from '@mui/material';
+import PropTypes from 'prop-types';
+
 import { RestartAlt } from '@mui/icons-material';
+import { Button } from '@mui/material';
 
 const ResetAnswersButton = forwardRef(({ onResetPollAnswers, ...rest }, ref) => {
   const handleButtonClick = () => {

@@ -1,11 +1,12 @@
-import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
+
+import PropTypes from 'prop-types';
 
 import { Stack, Typography, Box, alpha } from '@mui/material';
 
-import { getPercentageValue } from '@/utils/get-percentage-value';
 import { createColorFromHash } from '@/utils/create-color-from-hash';
 import { createLinearGradient } from '@/utils/create-linear-gradient';
+import { getPercentageValue } from '@/utils/get-percentage-value';
 
 const LinearIndicator = forwardRef(({ choice, votes, totalVotes, ...rest }, ref) => {
   const percentageValue = getPercentageValue(votes, totalVotes);
