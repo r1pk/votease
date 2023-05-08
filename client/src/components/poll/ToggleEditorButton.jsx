@@ -5,13 +5,9 @@ import PropTypes from 'prop-types';
 import { Edit } from '@mui/icons-material';
 import { Button } from '@mui/material';
 
-const ToggleEditorButton = forwardRef(({ onTogglePollEditor, isPollEditorEnabled, ...rest }, ref) => {
-  const handleButtonClick = () => {
-    onTogglePollEditor();
-  };
-
+const ToggleEditorButton = forwardRef(({ isPollEditorEnabled, ...rest }, ref) => {
   return (
-    <Button size="small" variant="contained" startIcon={<Edit />} onClick={handleButtonClick} ref={ref} {...rest}>
+    <Button size="small" variant="contained" startIcon={<Edit />} ref={ref} {...rest}>
       {isPollEditorEnabled ? 'Close Poll Editor' : 'Show Poll Editor'}
     </Button>
   );
@@ -20,7 +16,6 @@ const ToggleEditorButton = forwardRef(({ onTogglePollEditor, isPollEditorEnabled
 ToggleEditorButton.displayName = 'ToggleEditorButton';
 
 ToggleEditorButton.propTypes = {
-  onTogglePollEditor: PropTypes.func.isRequired,
   isPollEditorEnabled: PropTypes.bool.isRequired,
 };
 

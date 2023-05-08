@@ -36,28 +36,28 @@ const Room = () => {
     choices: poll.choices.map((choice) => choice.title),
   };
 
-  const handleSubmitChoice = (choiceId) => {
+  const handleChoiceClick = (choiceId) => {
     colyseus.room.send('poll::cast-answer', {
       choiceId: choiceId,
     });
   };
 
-  const handleEditPoll = (data) => {
+  const handlePollEditorSubmit = (data) => {
     colyseus.room.send('poll::edit', data);
     setIsPollEditorEnabled(false);
   };
 
-  const handleResetPollAnswers = () => {
+  const handleResetAnswersButtonClick = () => {
     colyseus.room.send('poll::reset-answers');
   };
 
-  const handleLeaveRoom = async () => {
+  const handleLeaveRoomButtonClick = async () => {
     colyseus.room.leave();
     dispatch(actions.store.clear());
     navigate('/');
   };
 
-  const handleTogglePollEditor = () => {
+  const handleToggleEditorButtonClick = () => {
     setIsPollEditorEnabled(!isPollEditorEnabled);
   };
 
@@ -94,18 +94,15 @@ const Room = () => {
         <Stack spacing={2}>
           {isCurrentUserRoomOwner && (
             <Stack direction={{ xs: 'column', md: 'row' }} spacing={1} sx={{ justifyContent: 'flex-end' }}>
-              <ToggleEditorButton
-                onTogglePollEditor={handleTogglePollEditor}
-                isPollEditorEnabled={isPollEditorEnabled}
-              />
-              <ResetAnswersButton onResetPollAnswers={handleResetPollAnswers} />
+              <ToggleEditorButton isPollEditorEnabled={isPollEditorEnabled} onClick={handleToggleEditorButtonClick} />
+              <ResetAnswersButton onClick={handleResetAnswersButtonClick} />
             </Stack>
           )}
-          {!isPollEditorEnabled && <Poll poll={poll} user={session.user} onSubmitChoice={handleSubmitChoice} />}
-          {isPollEditorEnabled && <PollEditor onEditPoll={handleEditPoll} defaultValues={{ poll: plainPoll }} />}
-          <UserList users={room.users} owner={room.owner} />
+          {!isPollEditorEnabled && <Poll poll={poll} user={session.user} onChoiceClick={handleChoiceClick} />}
+          {isPollEditorEnabled && <PollEditor defaultValues={{ poll: plainPoll }} onSubmit={handlePollEditorSubmit} />}
+          <UserList owner={room.owner} users={room.users} />
           <Stack direction="row" sx={{ justifyContent: 'flex-end' }}>
-            <LeaveRoomButton onLeaveRoom={handleLeaveRoom} />
+            <LeaveRoomButton onConfirmedClick={handleLeaveRoomButtonClick} />
           </Stack>
         </Stack>
       </Grid>

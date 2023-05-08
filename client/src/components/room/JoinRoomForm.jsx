@@ -15,7 +15,7 @@ const schema = Joi.object({
   username: Joi.string().trim().alphanum().min(3).max(20).required().label('username'),
 });
 
-const JoinRoomForm = forwardRef(({ onJoinRoom, roomId, ...rest }, ref) => {
+const JoinRoomForm = forwardRef(({ roomId, onSubmit, ...rest }, ref) => {
   const { control, formState, handleSubmit } = useForm({
     mode: 'all',
     defaultValues: {
@@ -26,14 +26,16 @@ const JoinRoomForm = forwardRef(({ onJoinRoom, roomId, ...rest }, ref) => {
   });
   const { isValid } = formState;
 
-  const onSubmit = (data) => {
-    if (isValid) {
-      onJoinRoom(data);
+  const handleFormSubmit = (data) => {
+    if (!isValid) {
+      return;
     }
+
+    onSubmit(data);
   };
 
   return (
-    <Card component="form" onSubmit={handleSubmit(onSubmit)} ref={ref} {...rest}>
+    <Card component="form" onSubmit={handleSubmit(handleFormSubmit)} ref={ref} {...rest}>
       <CardHeader
         title="Join Room"
         titleTypographyProps={{
@@ -86,8 +88,8 @@ const JoinRoomForm = forwardRef(({ onJoinRoom, roomId, ...rest }, ref) => {
 JoinRoomForm.displayName = 'JoinRoomForm';
 
 JoinRoomForm.propTypes = {
-  onJoinRoom: PropTypes.func.isRequired,
   roomId: PropTypes.string,
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default JoinRoomForm;

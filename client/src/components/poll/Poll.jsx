@@ -10,14 +10,16 @@ import ChoiceButton from './ChoiceButton';
 import LinearIndicator from './LinearIndicator';
 import UserAnswerChip from './UserAnswerChip';
 
-const Poll = forwardRef(({ poll, user, onSubmitChoice, ...rest }, ref) => {
+const Poll = forwardRef(({ poll, user, onChoiceClick, ...rest }, ref) => {
   const answerCount = sumAnswersPerChoice(poll.choices, poll.answers);
   const hasUserAnswered = poll.answers.some((answer) => answer.user.id === user.id);
 
-  const handleClickChoice = (choiceId) => {
-    if (!hasUserAnswered) {
-      onSubmitChoice(choiceId);
+  const handleChoiceButtonClick = (choiceId) => {
+    if (hasUserAnswered) {
+      return;
     }
+
+    onChoiceClick(choiceId);
   };
 
   return (
@@ -44,7 +46,7 @@ const Poll = forwardRef(({ poll, user, onSubmitChoice, ...rest }, ref) => {
             ))}
           {!hasUserAnswered &&
             poll.choices.map((choice) => (
-              <ChoiceButton key={choice.id} choice={choice} onClickChoice={handleClickChoice} />
+              <ChoiceButton key={choice.id} choice={choice} onClick={handleChoiceButtonClick} />
             ))}
         </Stack>
       </CardActions>
@@ -78,6 +80,10 @@ Poll.propTypes = {
       })
     ).isRequired,
   }),
+  user: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+  }),
+  onChoiceClick: PropTypes.func.isRequired,
 };
 
 export default Poll;

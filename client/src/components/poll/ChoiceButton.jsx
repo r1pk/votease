@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 
 import { Button } from '@mui/material';
 
-const ChoiceButton = forwardRef(({ choice, onClickChoice, ...rest }, ref) => {
+const ChoiceButton = forwardRef(({ choice, onClick, ...rest }, ref) => {
   const handleButtonClick = () => {
-    onClickChoice(choice.id);
+    onClick(choice.id);
   };
 
   return (
@@ -23,7 +23,7 @@ ChoiceButton.propTypes = {
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
   }),
-  onClickChoice: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default ChoiceButton;

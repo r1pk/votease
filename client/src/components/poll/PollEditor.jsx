@@ -27,7 +27,7 @@ const schema = Joi.object({
   }),
 });
 
-const PollEditor = forwardRef(({ onEditPoll, defaultValues, ...rest }, ref) => {
+const PollEditor = forwardRef(({ defaultValues, onSubmit, ...rest }, ref) => {
   const { control, formState, handleSubmit } = useForm({
     mode: 'all',
     defaultValues: Object.assign(
@@ -44,22 +44,24 @@ const PollEditor = forwardRef(({ onEditPoll, defaultValues, ...rest }, ref) => {
   const { fields, append, remove } = useFieldArray({ control: control, name: 'poll.choices' });
   const { isValid, isDirty } = formState;
 
-  const handleAddChoice = () => {
+  const handleChoiceAppend = () => {
     append(`Choice ${fields.length + 1}`);
   };
 
-  const handleRemoveChoice = () => {
+  const handleChoiceRemove = () => {
     remove(fields.length - 1);
   };
 
-  const onSubmit = (data) => {
-    if (isValid && isDirty) {
-      onEditPoll(data);
+  const handleFormSubmit = (data) => {
+    if (!isValid || !isDirty) {
+      return;
     }
+
+    onSubmit(data);
   };
 
   return (
-    <Card component="form" onSubmit={handleSubmit(onSubmit)} ref={ref} {...rest}>
+    <Card component="form" onSubmit={handleSubmit(handleFormSubmit)} ref={ref} {...rest}>
       <CardHeader
         title="Edit Poll"
         titleTypographyProps={{
@@ -102,10 +104,10 @@ const PollEditor = forwardRef(({ onEditPoll, defaultValues, ...rest }, ref) => {
                 />
               ))}
               <Stack direction="row" spacing={1} sx={{ justifyContent: 'center' }}>
-                <IconButton size="small" onClick={handleAddChoice}>
+                <IconButton size="small" onClick={handleChoiceAppend}>
                   <Add />
                 </IconButton>
-                <IconButton size="small" onClick={handleRemoveChoice} disabled={fields.length <= 2}>
+                <IconButton size="small" onClick={handleChoiceRemove} disabled={fields.length <= 2}>
                   <Remove />
                 </IconButton>
               </Stack>
@@ -125,7 +127,7 @@ const PollEditor = forwardRef(({ onEditPoll, defaultValues, ...rest }, ref) => {
 PollEditor.displayName = 'PollEditor';
 
 PollEditor.propTypes = {
-  onEditPoll: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   defaultValues: PropTypes.shape({
     poll: PropTypes.shape({
       title: PropTypes.string,

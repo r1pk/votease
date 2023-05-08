@@ -6,7 +6,7 @@ import { Paper, Stack } from '@mui/material';
 
 import UserChip from './UserChip';
 
-const UserList = forwardRef(({ users, owner, ...rest }, ref) => {
+const UserList = forwardRef(({ owner, users, ...rest }, ref) => {
   return (
     <Paper sx={{ p: 1 }} ref={ref} {...rest}>
       <Stack direction="row" sx={{ flexWrap: 'wrap', gap: 1 }}>
