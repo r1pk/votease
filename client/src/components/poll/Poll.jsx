@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 
 import PropTypes from 'prop-types';
 
-import { Card, CardHeader, CardActions, CardContent, Divider, Stack } from '@mui/material';
+import { Card, CardActions, CardContent, CardHeader, Divider, Stack } from '@mui/material';
 
 import { sumAnswersPerChoice } from '@/utils/sum-answers-per-choice';
 

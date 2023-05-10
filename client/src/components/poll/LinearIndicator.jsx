@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 
 import PropTypes from 'prop-types';
 
-import { Stack, Typography, Box, alpha } from '@mui/material';
+import { Box, Stack, Typography, alpha } from '@mui/material';
 
 import { createColorFromHash } from '@/utils/create-color-from-hash';
 import { createLinearGradient } from '@/utils/create-linear-gradient';
