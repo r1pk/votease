@@ -5,13 +5,13 @@ Directory containing client-side application for [VotEase project](https://githu
 ## Screenshots
 
 Create room page
-![Create Room Page](https://i.imgur.com/QnHY4Xg.png)
+![Create Room Page](https://i.imgur.com/Gxzsq8i.png)
 
 Join room page
-![Join Room Page](https://i.imgur.com/bNyRCEB.png)
+![Join Room Page](https://i.imgur.com/19Lau6e.png)
 
 Room page
-![Room Page](https://i.imgur.com/YGDzb9A.png)
+![Room Page](https://i.imgur.com/e7uDkSv.png)
 
 ## Project structure
 
