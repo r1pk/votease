@@ -2,6 +2,17 @@
 
 VotEase is a responsive web application that allows users to perform simple and quick polls in private rooms. VotEase is built using technologies such as [React](https://reactjs.org/), [React-Router](https://reactrouter.com), [Redux](https://redux.js.org/), [Material-UI](https://mui.com/) and [Colyseus](https://colyseus.io/).
 
+## Screenshots
+
+Create room page
+![Create Room Page](https://i.imgur.com/Gxzsq8i.png)
+
+Join room page
+![Join Room Page](https://i.imgur.com/19Lau6e.png)
+
+Room page
+![Room Page](https://i.imgur.com/e7uDkSv.png)
+
 ## Project structure
 
 ```bash
