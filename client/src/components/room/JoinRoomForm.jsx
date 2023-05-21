@@ -8,7 +8,7 @@ import { Controller, useForm } from 'react-hook-form';
 
 import { Button, Card, CardActions, CardContent, CardHeader, Stack, TextField } from '@mui/material';
 
-import { createRandomUsername } from '@/utils/create-random-username';
+import UsernameField from './UsernameField';
 
 const schema = Joi.object({
   roomId: Joi.string().trim().length(9).required().label('roomId'),
@@ -20,7 +20,7 @@ const JoinRoomForm = forwardRef(({ roomId, onSubmit, ...rest }, ref) => {
     mode: 'all',
     defaultValues: {
       roomId: roomId || '',
-      username: createRandomUsername(),
+      username: '',
     },
     resolver: joiResolver(schema),
   });
@@ -64,11 +64,12 @@ const JoinRoomForm = forwardRef(({ roomId, onSubmit, ...rest }, ref) => {
             name="username"
             control={control}
             render={({ field, fieldState }) => (
-              <TextField
+              <UsernameField
                 size="small"
                 label="Username"
                 error={Boolean(fieldState.error)}
                 helperText={fieldState.error?.message}
+                onGenerateUsername={field.onChange}
                 fullWidth
                 {...field}
               />

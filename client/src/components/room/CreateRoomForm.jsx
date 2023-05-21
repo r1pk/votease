@@ -6,9 +6,9 @@ import { joiResolver } from '@hookform/resolvers/joi';
 import Joi from 'joi';
 import { Controller, useForm } from 'react-hook-form';
 
-import { Button, Card, CardActions, CardContent, CardHeader, Stack, TextField } from '@mui/material';
+import { Button, Card, CardActions, CardContent, CardHeader, Stack } from '@mui/material';
 
-import { createRandomUsername } from '@/utils/create-random-username';
+import UsernameField from './UsernameField';
 
 const schema = Joi.object({
   username: Joi.string().trim().alphanum().min(3).max(20).required().label('username'),
@@ -22,7 +22,7 @@ const CreateRoomForm = forwardRef(({ onSubmit, ...rest }, ref) => {
   const { control, formState, handleSubmit } = useForm({
     mode: 'all',
     defaultValues: {
-      username: createRandomUsername(),
+      username: '',
       poll: {
         title: 'Initial Poll',
         choices: ['Option 1', 'Option 2'],
@@ -55,11 +55,12 @@ const CreateRoomForm = forwardRef(({ onSubmit, ...rest }, ref) => {
             name="username"
             control={control}
             render={({ field, fieldState }) => (
-              <TextField
+              <UsernameField
                 size="small"
                 label="Username"
                 error={Boolean(fieldState.error)}
                 helperText={fieldState.error?.message}
+                onGenerateUsername={field.onChange}
                 fullWidth
                 {...field}
               />
