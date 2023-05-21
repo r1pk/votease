@@ -44,11 +44,11 @@ const PollEditor = forwardRef(({ defaultValues, onSubmit, ...rest }, ref) => {
   const { fields, append, remove } = useFieldArray({ control: control, name: 'poll.choices' });
   const { isValid, isDirty } = formState;
 
-  const handleChoiceAppend = () => {
+  const handleAppendChoice = () => {
     append(`Choice ${fields.length + 1}`);
   };
 
-  const handleChoiceRemove = () => {
+  const handleRemoveChoice = () => {
     remove(fields.length - 1);
   };
 
@@ -104,10 +104,10 @@ const PollEditor = forwardRef(({ defaultValues, onSubmit, ...rest }, ref) => {
                 />
               ))}
               <Stack direction="row" spacing={1} sx={{ justifyContent: 'center' }}>
-                <IconButton size="small" onClick={handleChoiceAppend}>
+                <IconButton size="small" onClick={handleAppendChoice}>
                   <Add />
                 </IconButton>
-                <IconButton size="small" onClick={handleChoiceRemove} disabled={fields.length <= 2}>
+                <IconButton size="small" onClick={handleRemoveChoice} disabled={fields.length <= 2}>
                   <Remove />
                 </IconButton>
               </Stack>

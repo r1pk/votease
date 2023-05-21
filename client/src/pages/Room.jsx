@@ -36,28 +36,28 @@ const Room = () => {
     choices: poll.choices.map((choice) => choice.title),
   };
 
-  const handleChoiceClick = (choiceId) => {
+  const handleSelectChoice = (choiceId) => {
     colyseus.room.send('poll::cast-answer', {
       choiceId: choiceId,
     });
   };
 
-  const handlePollEditorSubmit = (data) => {
+  const handleEditPoll = (data) => {
     colyseus.room.send('poll::edit', data);
     setIsPollEditorEnabled(false);
   };
 
-  const handleResetAnswersButtonClick = () => {
+  const handleResetAnswers = () => {
     colyseus.room.send('poll::reset-answers');
   };
 
-  const handleLeaveRoomButtonClick = async () => {
+  const handleLeaveRoom = async () => {
     colyseus.room.leave();
     dispatch(actions.store.clear());
     navigate('/');
   };
 
-  const handleToggleEditorButtonClick = () => {
+  const handleToggleEditor = () => {
     setIsPollEditorEnabled(!isPollEditorEnabled);
   };
 
@@ -94,15 +94,15 @@ const Room = () => {
         <Stack spacing={2}>
           {isCurrentUserRoomOwner && (
             <Stack direction={{ xs: 'column', md: 'row' }} spacing={1} sx={{ justifyContent: 'flex-end' }}>
-              <ToggleEditorButton isPollEditorEnabled={isPollEditorEnabled} onClick={handleToggleEditorButtonClick} />
-              <ResetAnswersButton onClick={handleResetAnswersButtonClick} />
+              <ToggleEditorButton isPollEditorEnabled={isPollEditorEnabled} onClick={handleToggleEditor} />
+              <ResetAnswersButton onClick={handleResetAnswers} />
             </Stack>
           )}
-          {!isPollEditorEnabled && <Poll poll={poll} user={session.user} onChoiceClick={handleChoiceClick} />}
-          {isPollEditorEnabled && <PollEditor defaultValues={{ poll: plainPoll }} onSubmit={handlePollEditorSubmit} />}
+          {!isPollEditorEnabled && <Poll poll={poll} user={session.user} onSelectChoice={handleSelectChoice} />}
+          {isPollEditorEnabled && <PollEditor defaultValues={{ poll: plainPoll }} onSubmit={handleEditPoll} />}
           <UserList owner={room.owner} users={room.users} />
           <Stack direction="row" sx={{ justifyContent: 'flex-end' }}>
-            <LeaveRoomButton onConfirmedClick={handleLeaveRoomButtonClick} />
+            <LeaveRoomButton onConfirmedClick={handleLeaveRoom} />
           </Stack>
         </Stack>
       </Grid>

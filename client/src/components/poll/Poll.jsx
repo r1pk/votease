@@ -10,7 +10,7 @@ import ChoiceButton from './ChoiceButton';
 import LinearIndicator from './LinearIndicator';
 import UserAnswerChip from './UserAnswerChip';
 
-const Poll = forwardRef(({ poll, user, onChoiceClick, ...rest }, ref) => {
+const Poll = forwardRef(({ poll, user, onSelectChoice, ...rest }, ref) => {
   const answerCount = sumAnswersPerChoice(poll.choices, poll.answers);
   const hasUserAnswered = poll.answers.some((answer) => answer.user.id === user.id);
 
@@ -19,7 +19,7 @@ const Poll = forwardRef(({ poll, user, onChoiceClick, ...rest }, ref) => {
       return;
     }
 
-    onChoiceClick(choiceId);
+    onSelectChoice(choiceId);
   };
 
   return (
@@ -83,7 +83,7 @@ Poll.propTypes = {
   user: PropTypes.shape({
     id: PropTypes.string.isRequired,
   }),
-  onChoiceClick: PropTypes.func.isRequired,
+  onSelectChoice: PropTypes.func.isRequired,
 };
 
 export default Poll;
