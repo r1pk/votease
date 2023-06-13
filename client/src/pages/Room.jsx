@@ -36,7 +36,7 @@ const Room = () => {
     choices: poll.choices.map((choice) => choice.title),
   };
 
-  const handleSelectChoice = (choiceId) => {
+  const handleSendChoice = (choiceId) => {
     colyseus.room.send('poll::cast-answer', {
       choiceId: choiceId,
     });
@@ -98,7 +98,7 @@ const Room = () => {
               <ResetAnswersButton onClick={handleResetAnswers} />
             </Stack>
           )}
-          {!isPollEditorEnabled && <Poll poll={poll} user={session.user} onSelectChoice={handleSelectChoice} />}
+          {!isPollEditorEnabled && <Poll poll={poll} user={session.user} onChoiceButtonClick={handleSendChoice} />}
           {isPollEditorEnabled && <PollEditor defaultValues={{ poll: plainPoll }} onSubmit={handleEditPoll} />}
           <UserList owner={room.owner} users={room.users} />
           <Stack direction="row" sx={{ justifyContent: 'flex-end' }}>
